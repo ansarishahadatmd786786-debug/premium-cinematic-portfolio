@@ -1,0 +1,93 @@
+.process {
+  background: var(--bg);
+}
+
+.process-head {
+  grid-column: 1 / span 4;
+  align-self: start;
+  position: sticky;
+  top: calc(var(--nav-h) + 4vh);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.process-head .label-row {
+  margin-bottom: 0;
+}
+.process-title {
+  max-width: 9ch;
+}
+.process-lead {
+  max-width: 34ch;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.process-steps {
+  grid-column: 6 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 9vh, 96px);
+  padding-left: clamp(36px, 4vw, 64px);
+}
+
+.process-track,
+.process-fill {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 1px;
+  background: var(--line-soft);
+}
+.process-fill {
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: calc(-1 * clamp(36px, 4vw, 64px) - 3.5px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.process-step-num {
+  letter-spacing: 0.22em;
+}
+.process-step-title {
+  font-size: clamp(26px, 2.9vw, 44px);
+  margin-bottom: 0.8rem;
+}
+.process-step-desc {
+  max-width: 48ch;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .process-head,
+  .process-steps {
+    grid-column: 1 / -1;
+  }
+  .process-head {
+    position: static;
+    margin-bottom: clamp(48px, 8vh, 72px);
+  }
+  .process-title {
+    max-width: 100%;
+  }
+}

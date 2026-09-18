@@ -1,0 +1,356 @@
+/* ============================================================
+   WORK — intro, gallery, project showcase
+   ============================================================ */
+
+/* ---------- Work intro ---------- */
+
+.workintro {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.workintro-pin {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--nav-h);
+}
+
+.workintro-head {
+  position: absolute;
+  top: calc(var(--nav-h) + 2vh);
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.16em;
+}
+
+.workintro-title {
+  line-height: 0.92;
+  font-size: clamp(72px, 15vw, 240px);
+  letter-spacing: -0.03em;
+}
+
+.workintro-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.045em;
+  margin-block: -0.045em;
+}
+
+.workintro-count {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(80px, 14vh, 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.workintro-num {
+  font-size: clamp(88px, 15vw, 220px);
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(243, 241, 236, 0.9);
+}
+
+.workintro-projects {
+  letter-spacing: 0.3em;
+}
+
+.workintro-note {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(80px, 14vh, 150px);
+  max-width: 34ch;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ---------- Work gallery ---------- */
+
+.work {
+  position: relative;
+  background: var(--bg);
+  padding-bottom: clamp(60px, 10vh, 140px);
+}
+
+.project {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gap);
+  align-items: center;
+  padding-block: clamp(70px, 12vh, 150px);
+}
+
+/* ---------- Background number ---------- */
+
+.project-bgnum {
+  position: absolute;
+  top: clamp(40px, 9vh, 110px);
+  right: -0.05em;
+  z-index: 0;
+  font-size: clamp(120px, 19vw, 300px);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(243, 241, 236, 0.08);
+  pointer-events: none;
+  user-select: none;
+}
+
+.project--flip .project-bgnum {
+  right: auto;
+  left: -0.05em;
+}
+
+/* ---------- Visual ---------- */
+
+.project-visual {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / span 8;
+  display: block;
+  min-width: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line-soft);
+  transform-origin: center center;
+}
+
+.project--flip .project-visual {
+  grid-column: 5 / span 8;
+  order: 2;
+}
+
+/* ---------- Image frame ---------- */
+
+.project-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10.4;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+
+/* Real project screenshots */
+.project-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: none;
+}
+
+/* ---------- Art-directed cover system ---------- */
+
+.project-cover {
+  position: absolute;
+  inset: -6% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(
+      120% 90% at 78% 12%,
+      hsl(var(--hue) 46% 13% / 0.9) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      90% 90% at 12% 88%,
+      hsl(var(--hue) 42% 9% / 0.85) 0%,
+      transparent 52%
+    ),
+    #0c0c0c;
+  transition: transform 0.8s var(--ease);
+}
+
+.project-cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 11% 20%;
+}
+
+.project-cover-initials {
+  font-size: clamp(120px, 14vw, 230px);
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px hsl(var(--hue) 60% 66% / 0.55);
+  transition:
+    -webkit-text-stroke-color 0.6s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.project-cover-meta {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.14em;
+}
+
+.project:hover .project-cover,
+.project-visual:focus-visible .project-cover {
+  transform: scale(1.035);
+}
+
+.project:hover .project-media img,
+.project-visual:focus-visible .project-media img {
+  transform: scale(1.02);
+}
+
+.project:hover .project-cover-initials {
+  -webkit-text-stroke-color: hsl(var(--hue) 85% 68% / 0.95);
+}
+
+/* ---------- Live badge ---------- */
+
+.project-live {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6em 1.05em;
+  border-radius: 999px;
+  background: rgba(9, 9, 9, 0.72);
+  border: 1px solid var(--line-soft);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+
+/* ---------- Info ---------- */
+
+.project-info {
+  position: relative;
+  z-index: 1;
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding-left: clamp(0px, 1.5vw, 22px);
+  min-width: 0;
+}
+
+.project--flip .project-info {
+  grid-column: 1 / span 4;
+  order: 1;
+  padding-left: 0;
+  padding-right: clamp(0px, 1.5vw, 22px);
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  letter-spacing: 0.15em;
+  font-size: 10.5px;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 1rem;
+}
+
+.project-name {
+  font-size: clamp(26px, 2.6vw, 42px);
+  line-height: 1;
+}
+
+.project-desc {
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 44ch;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  padding-block: 1.2rem;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.project-details > div {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.project-details dd {
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.project-cta {
+  align-self: flex-start;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.project-cta svg {
+  color: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .workintro-count {
+    bottom: auto;
+    top: 54%;
+    align-items: flex-start;
+    left: var(--gutter);
+    right: auto;
+  }
+
+  .workintro-note {
+    bottom: clamp(56px, 9vh, 90px);
+    max-width: 30ch;
+  }
+
+  .workintro-num {
+    font-size: clamp(90px, 26vw, 160px);
+  }
+
+  .project {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    padding-block: clamp(52px, 7vh, 84px);
+  }
+
+  .project-visual,
+  .project--flip .project-visual {
+    grid-column: 1 / -1;
+    order: 0;
+  }
+
+  .project-info,
+  .project--flip .project-info {
+    grid-column: 1 / -1;
+    order: 1;
+    padding: 0;
+    margin-top: 1.4rem;
+  }
+
+  .project-bgnum {
+    font-size: 120px;
+    top: 22px;
+  }
+}

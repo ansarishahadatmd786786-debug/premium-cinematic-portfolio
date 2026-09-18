@@ -1,0 +1,69 @@
+.cta {
+  background: var(--bg);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(72vw, 900px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 255, 61, 0.055) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.cta-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 4.5vh, 44px);
+  padding-block: clamp(40px, 8vh, 90px);
+}
+
+.cta-label {
+  letter-spacing: 0.3em;
+}
+
+.cta-title {
+  max-width: 100%;
+}
+
+.cta-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.cta-magnet {
+  display: inline-block;
+  will-change: transform;
+}
+
+.cta-btn {
+  padding: 1.4rem 2.8rem;
+  font-size: 12px;
+}
+
+.cta-direct {
+  letter-spacing: 0.12em;
+  display: inline-flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .cta-title {
+    font-size: 15.5vw;
+  }
+}

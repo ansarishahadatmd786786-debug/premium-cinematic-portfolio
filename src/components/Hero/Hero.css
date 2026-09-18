@@ -1,0 +1,198 @@
+/* ---------- Hero shell ---------- */
+.hero {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.hero-pin {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none; /* never block touch scrolling */
+}
+.hero-canvas canvas {
+  touch-action: pan-y !important;
+}
+
+.hero-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--nav-h) + 1.5vh) var(--gutter) clamp(20px, 4vh, 40px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- Top row ---------- */
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  letter-spacing: 0.16em;
+}
+.hero-top-right {
+  text-align: right;
+  max-width: 30ch;
+}
+
+/* ---------- Title ---------- */
+.hero-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.94;
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  font-size: clamp(54px, 9.6vw, 156px);
+  letter-spacing: -0.028em;
+  padding-block: 0.05em;
+  margin-block: -0.05em;
+}
+.hero-line .w-inner {
+  will-change: transform;
+}
+
+/* ---------- Final phrase ---------- */
+.hero-final {
+  position: absolute;
+  inset: 0;
+  display: none; /* static fallback: hero title stands alone */
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(1.2rem, 3vh, 2.2rem);
+}
+/* cinematic (JS-driven) mode reveals this layer */
+.hero--cinematic .hero-final {
+  display: flex;
+}
+
+.hero-final-line {
+  font-size: clamp(54px, 9.6vw, 156px);
+  letter-spacing: -0.028em;
+  line-height: 0.94;
+}
+
+.hero-sub {
+  max-width: 42ch;
+  font-family: var(--f-body);
+  font-size: clamp(14px, 1.25vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-dim);
+}
+
+/* ---------- Bottom row ---------- */
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  letter-spacing: 0.16em;
+}
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+}
+.hero-scroll {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--ink-dim), transparent);
+  animation: scrollcue 2.2s var(--ease) infinite;
+  transform-origin: top center;
+}
+@keyframes scrollcue {
+  0% { transform: scaleY(0); }
+  45% { transform: scaleY(1); transform-origin: top center; }
+  55% { transform: scaleY(1); transform-origin: bottom center; }
+  100% { transform: scaleY(0); transform-origin: bottom center; }
+}
+.hero-loc {
+  text-align: right;
+}
+
+/* ---------- WebGL fallback art ---------- */
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.hero-fallback-ring {
+  position: absolute;
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+}
+.hero-fallback-ring.r1 { width: min(62vmin, 560px); aspect-ratio: 1; }
+.hero-fallback-ring.r2 {
+  width: min(82vmin, 760px); aspect-ratio: 1;
+  border-style: dashed; opacity: 0.6;
+  animation: spin 60s linear infinite;
+}
+.hero-fallback-ring.r3 { width: min(104vmin, 980px); aspect-ratio: 1; opacity: 0.4; }
+.hero-fallback-orb {
+  width: min(38vmin, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.28), transparent 42%),
+    radial-gradient(circle at 72% 78%, rgba(200, 255, 61, 0.1), transparent 46%),
+    radial-gradient(circle at 50% 50%, #1b1b1b, #0b0b0b 72%);
+  box-shadow:
+    inset -18px -22px 60px rgba(0, 0, 0, 0.75),
+    0 40px 90px rgba(0, 0, 0, 0.6);
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero-top-right {
+    display: none;
+  }
+  .hero-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-line,
+  .hero-final-line {
+    font-size: clamp(46px, 13.8vw, 92px);
+  }
+  .hero-status {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,116 @@
+.contact {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line-soft);
+}
+
+.contact-grid {
+  align-items: start;
+}
+
+.contact-left {
+  grid-column: 1 / span 5;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.contact-note {
+  max-width: 40ch;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.contact-rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(16px, 3vh, 32px);
+}
+.contact-row-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line-soft);
+}
+.contact-row-item:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+.contact-row-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  letter-spacing: 0.18em;
+}
+.contact-row-value {
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 500;
+  align-self: flex-start;
+  word-break: break-all;
+}
+
+/* ---------- Form ---------- */
+.contact-form {
+  grid-column: 7 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 30px);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.field label {
+  letter-spacing: 0.16em;
+  font-size: 10.5px;
+}
+.field input,
+.field textarea {
+  padding: 0.4rem 0 0.9rem;
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+  transition: border-color 0.35s var(--ease);
+  resize: vertical;
+  min-height: 0;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(154, 154, 150, 0.5);
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+}
+
+.contact-submit {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.contact-hint {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  max-width: 30ch;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .contact-left,
+  .contact-form {
+    grid-column: 1 / -1;
+  }
+  .contact-form {
+    margin-top: clamp(44px, 7vh, 64px);
+  }
+}

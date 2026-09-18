@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Placeholder — update with the real domain after deploy
+Sitemap: https://shahadat.vercel.app/sitemap.xml
