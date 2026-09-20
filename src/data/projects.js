@@ -193,6 +193,21 @@ const projects = [
     hue: 28,
     image: "/images/projects/pee-kay/cover.png",
   },
+  {
+    id: "premium-jewellery-showroom",
+    num: "13",
+    name: "Premium Jewellery Showroom",
+    category: "Jewellery Showroom Website",
+    url: "https://premium-jewellery-showroom.vercel.app/",
+    description:
+      "Premium jewellery showroom website concept designed as a digital catalogue, featuring curated collections, product detail experiences, bridal jewellery, showroom information, and direct WhatsApp enquiry journeys.",
+    focus: ["Luxury presentation", "Product catalogue", "Lead generation"],
+    tech: ["React", "TypeScript", "CSS", "Vercel"],
+    type: "Concept Project",
+    initials: "PJ",
+    hue: 42,
+    image: "/images/projects/premium-jewellery-showroom/cover.png",
+  },
 ];
 
 export default projects;
