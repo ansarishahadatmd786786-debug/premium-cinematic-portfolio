@@ -196,3 +196,37 @@
     font-size: 10px;
   }
 }
+
+/* =========================================================
+   FINAL HERO FILM STRIP POSITION
+   Keep project visuals below the main headline.
+   ========================================================= */
+
+.hero-canvas {
+  top: 22% !important;
+  height: 78% !important;
+  z-index: 1;
+  transform: translate3d(0, 95px, 0) !important;
+}
+
+.hero-ui {
+  z-index: 2;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-final {
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .hero-canvas {
+    top: 30% !important;
+    height: 70% !important;
+    transform: translate3d(0, 55px, 0) !important;
+  }
+}
