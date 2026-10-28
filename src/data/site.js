@@ -21,8 +21,7 @@ const site = {
   availability: "Available for new projects",
   year: "2026",
 
-  // Placeholder canonical — swap with the real domain after deploy
-  canonical: "https://shahadat.vercel.app/",
+  canonical: "https://premium-cinematic-portfolio.vercel.app",
 
   // Social links — only rendered when a real url is provided.
   socials: [
