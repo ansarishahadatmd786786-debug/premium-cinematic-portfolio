@@ -20,7 +20,7 @@
   transition: -webkit-text-stroke-color 0.6s var(--ease);
 }
 .footer-word-wrap:hover .footer-word {
-  -webkit-text-stroke-color: rgba(200, 255, 61, 0.55);
+  -webkit-text-stroke-color: rgba(232, 169, 60, 0.7);
 }
 
 .footer-mid {
@@ -67,7 +67,7 @@
   flex-wrap: wrap;
   padding-block: 26px;
   letter-spacing: 0.14em;
-  font-size: 10.5px;
+  font-size: 13px;
 }
 .footer-top {
   display: inline-flex;

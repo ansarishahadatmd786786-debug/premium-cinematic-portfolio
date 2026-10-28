@@ -34,7 +34,7 @@
 }
 
 .stack-index {
-  font-size: 10.5px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   transition: color 0.35s var(--ease);
 }
@@ -83,6 +83,6 @@
     grid-template-columns: 40px 1fr auto;
   }
   .stack-note {
-    font-size: 9.5px;
+    font-size: 13px;
   }
 }

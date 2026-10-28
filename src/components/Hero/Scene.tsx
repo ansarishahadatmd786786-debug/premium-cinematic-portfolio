@@ -140,7 +140,7 @@ function ProjectFrame({
       {/* Outer frame */}
       <mesh position={[0, 0, -0.045]}>
         <planeGeometry args={[5.42, 3.1]} />
-        <meshBasicMaterial color="#050505" />
+        <meshBasicMaterial color="#0F0E0C" />
       </mesh>
 
       {/* Project screenshot */}
@@ -155,18 +155,18 @@ function ProjectFrame({
       <mesh position={[0, 0, 0.025]}>
         <planeGeometry args={[5.14, 2.84]} />
         <meshBasicMaterial
-          color="#050505"
+          color="#0F0E0C"
           transparent
           opacity={offset === 0 ? 0.1 : 0.23}
           depthWrite={false}
         />
       </mesh>
 
-      {/* Thin lime cinematic edge */}
+      {/* Thin amber cinematic edge */}
       <mesh position={[0, 1.42, 0.045]}>
         <planeGeometry args={[5.14, 0.014]} />
         <meshBasicMaterial
-          color="#d7ff5f"
+          color="#E8A93C"
           transparent
           opacity={offset === 0 ? 0.55 : 0.18}
         />

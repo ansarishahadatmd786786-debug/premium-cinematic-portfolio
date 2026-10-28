@@ -113,7 +113,6 @@ export default function ProjectCard({
           ) : (
             <div
               className="project-cover"
-              style={{ "--hue": project.hue } as React.CSSProperties}
             >
               <span className="project-cover-grid" />
               <span className="project-cover-initials display">

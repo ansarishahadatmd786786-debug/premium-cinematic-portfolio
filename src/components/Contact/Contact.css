@@ -63,7 +63,7 @@
 }
 .field label {
   letter-spacing: 0.16em;
-  font-size: 10.5px;
+  font-size: 13px;
 }
 .field input,
 .field textarea {
@@ -99,7 +99,7 @@
   margin-top: 0.4rem;
 }
 .contact-hint {
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   max-width: 30ch;
   line-height: 1.7;

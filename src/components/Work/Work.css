@@ -161,15 +161,15 @@
   background:
     radial-gradient(
       120% 90% at 78% 12%,
-      hsl(var(--hue) 46% 13% / 0.9) 0%,
+      color-mix(in srgb, var(--accent) 12%, transparent) 0%,
       transparent 55%
     ),
     radial-gradient(
       90% 90% at 12% 88%,
-      hsl(var(--hue) 42% 9% / 0.85) 0%,
+      color-mix(in srgb, var(--accent) 8%, transparent) 0%,
       transparent 52%
     ),
-    #0c0c0c;
+    var(--bg);
   transition: transform 0.8s var(--ease);
 }
 
@@ -186,7 +186,7 @@
   font-size: clamp(120px, 14vw, 230px);
   letter-spacing: -0.03em;
   color: transparent;
-  -webkit-text-stroke: 1px hsl(var(--hue) 60% 66% / 0.55);
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 55%, transparent);
   transition:
     -webkit-text-stroke-color 0.6s var(--ease),
     transform 0.8s var(--ease);
@@ -213,7 +213,7 @@
 }
 
 .project:hover .project-cover-initials {
-  -webkit-text-stroke-color: hsl(var(--hue) 85% 68% / 0.95);
+  -webkit-text-stroke-color: var(--accent);
 }
 
 /* ---------- Live badge ---------- */
@@ -228,11 +228,11 @@
   gap: 0.55rem;
   padding: 0.6em 1.05em;
   border-radius: 999px;
-  background: rgba(9, 9, 9, 0.72);
+  background: rgba(15, 14, 12, 0.88);
   border: 1px solid var(--line-soft);
   backdrop-filter: blur(8px);
   letter-spacing: 0.14em;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 /* ---------- Info ---------- */
@@ -260,7 +260,7 @@
   justify-content: space-between;
   gap: 1rem;
   letter-spacing: 0.15em;
-  font-size: 10.5px;
+  font-size: 13px;
   border-bottom: 1px solid var(--line-soft);
   padding-bottom: 1rem;
 }
@@ -280,7 +280,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  font-size: 10.5px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   padding-block: 1.2rem;
   border-top: 1px solid var(--line-soft);
@@ -302,7 +302,7 @@
 .project-cta {
   align-self: flex-start;
   letter-spacing: 0.16em;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ink);
 }
 
@@ -352,5 +352,125 @@
   .project-bgnum {
     font-size: 120px;
     top: 22px;
+  }
+}
+/* ---------- Cinematic selected-work intro ---------- */
+
+.workintro {
+  min-height: 100svh;
+  background:
+    radial-gradient(
+      70% 80% at 82% 42%,
+      rgba(232, 169, 60, 0.09),
+      transparent 62%
+    ),
+    radial-gradient(
+      55% 65% at 18% 72%,
+      rgba(232, 169, 60, 0.055),
+      transparent 65%
+    ),
+    var(--bg);
+}
+
+.workintro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 25% 100%;
+  opacity: 0.35;
+}
+
+.workintro-title {
+  color: var(--ink);
+}
+
+.workintro-count {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.workintro-num {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(243, 241, 236, 0.18);
+  opacity: 0.9;
+}
+
+.workintro-note {
+  z-index: 2;
+}
+
+.workintro-note > p:first-child {
+  margin-bottom: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  font-size: 13px;
+}
+
+.workintro-statement {
+  max-width: 14ch;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+  font-size: clamp(42px, 5.2vw, 82px);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.workintro-note > p:last-child {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+.workintro-projects {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(80px, 14vh, 150px);
+  z-index: 1;
+}
+
+.workintro-projects .workintro-num {
+  display: block;
+}
+
+.workintro-line {
+  position: absolute;
+  right: 0;
+  bottom: -1.4rem;
+  width: clamp(80px, 12vw, 180px);
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  background: var(--line-soft);
+}
+
+.workintro-line .accent {
+  display: block;
+  width: 34%;
+  height: 100%;
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .workintro {
+    min-height: 88svh;
+  }
+
+  .workintro-projects {
+    right: var(--gutter);
+    bottom: clamp(56px, 9vh, 90px);
+  }
+
+  .workintro-statement {
+    font-size: clamp(38px, 9vw, 64px);
   }
 }
