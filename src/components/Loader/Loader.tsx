@@ -4,10 +4,9 @@ import site from "../../data/site";
 import "./Loader.css";
 
 /**
- * Cinematic loader — brand + 000 → 100 progress.
+ * Cinematic loader with brand and progress.
  * Runs once per session on initial page load, then slides away.
- * onBeginExit fires as the panel starts to lift, so the hero
- * intro can begin underneath — one continuous transition.
+ * The hero intro begins underneath the panel transition.
  */
 export default function Loader({
   onBeginExit,
@@ -104,7 +103,7 @@ export default function Loader({
           <p className="loader-role mono dim">{site.roleDisplay}</p>
         </div>
         <div className="loader-foot mono">
-          <span className="dim">Portfolio — {site.year}</span>
+          <span className="dim">Portfolio {site.year}</span>
           <span ref={countRef} className="loader-count">
             000
           </span>

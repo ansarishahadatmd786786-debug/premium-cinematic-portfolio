@@ -13,7 +13,7 @@ const steps = [
   {
     n: "02",
     title: "Design",
-    desc: "Visual direction and layouts you review before a line of code is written. You know what you're getting — no surprises later.",
+    desc: "Review the visual direction and layouts before development begins.",
   },
   {
     n: "03",
@@ -28,7 +28,7 @@ const steps = [
   {
     n: "05",
     title: "Launch",
-    desc: "Deployment, domain setup and a final performance and SEO pass. Your site goes live — and it's yours.",
+    desc: "Prepare deployment, domain settings, performance checks and search metadata for handoff.",
   },
 ];
 
@@ -110,7 +110,7 @@ export default function Process() {
             From idea to launch.
           </h2>
           <p className="dim process-lead">
-            A clear, transparent workflow — you always know what happens next,
+            A clear workflow, with the next step explained as we go,
             and you review the design before development begins.
           </p>
         </div>

@@ -98,6 +98,20 @@
   flex-wrap: wrap;
   margin-top: 0.4rem;
 }
+.contact-whatsapp {
+  align-self: flex-start;
+}
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.contact-submit button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
 .contact-hint {
   font-size: 13px;
   letter-spacing: 0.1em;

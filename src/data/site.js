@@ -1,7 +1,7 @@
 /**
  * Central site configuration.
  *
- * Update contact details / identity HERE once —
+ * Update contact details and identity here once.
  * every component reads from this file.
  */
 
@@ -12,21 +12,34 @@ const site = {
   roleDisplay: "WEB DEVELOPER",
   tagline: "Modern websites for businesses and growing brands.",
 
-  // ---- Contact (temporary email — replace in ONE place) ----
-  email: "ansarish8880@gmail.com",
+  email: "ansarishahadatmd786786@gmail.com",
   phone: "7217658640",
   phoneDisplay: "72176 58640",
 
-  location: "Working worldwide",
+  location: "[TODO: city / location]",
   availability: "Available for new projects",
   year: "2026",
 
   canonical: "https://premium-cinematic-portfolio.vercel.app",
 
-  // Social links — only rendered when a real url is provided.
+  caseStudy: {
+    client: "[TODO: client]",
+    problem: "[TODO: problem]",
+    built: "[TODO: what was built]",
+    result: "[TODO: measurable result]",
+  },
+
+  packages: [
+    { name: "Landing page", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
+    { name: "Business website", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
+    { name: "Custom experience", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
+  ],
+
   socials: [
-    // { label: "GitHub", url: "" },
-    // { label: "LinkedIn", url: "" },
+    // [TODO: Add the GitHub profile URL]
+    { label: "GitHub", url: "" },
+    // [TODO: Add the LinkedIn profile URL]
+    { label: "LinkedIn", url: "" },
   ],
 };
 

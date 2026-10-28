@@ -203,10 +203,10 @@
    ========================================================= */
 
 .hero-canvas {
-  top: 22% !important;
-  height: 78% !important;
+  top: 28% !important;
+  height: 72% !important;
   z-index: 1;
-  transform: translate3d(0, 95px, 0) !important;
+  transform: translate3d(0, 150px, 0) !important;
 }
 
 .hero-ui {
@@ -226,8 +226,8 @@
 
 @media (max-width: 768px) {
   .hero-canvas {
-    top: 30% !important;
-    height: 70% !important;
-    transform: translate3d(0, 55px, 0) !important;
+    top: 36% !important;
+    height: 64% !important;
+    transform: translate3d(0, 65px, 0) !important;
   }
 }

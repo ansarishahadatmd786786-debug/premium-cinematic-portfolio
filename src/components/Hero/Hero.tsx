@@ -22,7 +22,13 @@ function FallbackArt() {
   );
 }
 
-export default function Hero({ started }: { started: boolean }) {
+export default function Hero({
+  started,
+  animateIntro,
+}: {
+  started: boolean;
+  animateIntro: boolean;
+}) {
   const rootRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -63,6 +69,13 @@ export default function Hero({ started }: { started: boolean }) {
   useEffect(() => {
     if (!started) return;
     const ctx = gsap.context(() => {
+      if (reduced || !animateIntro) {
+        gsap.set(".hero-line .w-inner", { yPercent: 0, y: 0 });
+        gsap.set(canvasRef.current, { opacity: 1, scale: 1 });
+        gsap.set([".hero-top", ".hero-bottom"], { opacity: 1, y: 0 });
+        return;
+      }
+
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
       tl.fromTo(
         ".hero-line .w-inner",
@@ -84,7 +97,7 @@ export default function Hero({ started }: { started: boolean }) {
         );
     }, rootRef);
     return () => ctx.revert();
-  }, [started]);
+  }, [started, animateIntro, reduced]);
 
   /* ---------- cinematic pinned scroll sequence ---------- */
   useEffect(() => {
@@ -106,16 +119,16 @@ export default function Hero({ started }: { started: boolean }) {
         },
       });
 
-      // Phase 01 — "I BUILD" & "DIGITAL" lift away
+      // Phase 01: "I BUILD" and "DIGITAL" lift away
       tl.to(".hero-line--1 .w-inner", { yPercent: -130, duration: 0.8, ease: "power2.in" }, 0.4)
         .to(".hero-line--2 .w-inner", { yPercent: -130, duration: 0.8, ease: "power2.in" }, 0.55)
         .to(".hero-line--3", { yPercent: -6, duration: 0.9 }, 0.5)
 
-        // Phase 02 — "EXPERIENCES." exits upward
+        // Phase 02: "EXPERIENCES." exits upward
         .to(".hero-line--3 .w-inner", { yPercent: -130, duration: 0.85, ease: "power2.in" }, 1.35)
         .to([".hero-top", ".hero-bottom"], { opacity: 0, duration: 0.5 }, 1.3)
 
-        // Phase 03 — "FOR BUSINESSES." mask-reveals
+        // Phase 03: "FOR BUSINESSES." mask-reveals
         .fromTo(
           ".hero-final",
           { clipPath: "inset(0 0 100% 0)" },
@@ -161,13 +174,13 @@ export default function Hero({ started }: { started: boolean }) {
 
         <div className="hero-ui">
           <div className="hero-top mono">
-            <span className="dim">Folio — {site.year}</span>
+            <span className="dim">Folio {site.year}</span>
             <span className="hero-top-right dim">{site.tagline}</span>
           </div>
 
           <div className="hero-stage">
             <h1 className="sr-only">
-              I build digital experiences for businesses — {site.firstName},{" "}
+              I build digital experiences for businesses. {site.firstName},{" "}
               {site.role}.
             </h1>
 
@@ -196,8 +209,8 @@ export default function Hero({ started }: { started: boolean }) {
                 Businesses<span className="accent">.</span>
               </span>
               <p className="hero-sub">
-                Modern, responsive websites that turn your visitors into
-                customers — designed with intent, built to perform.
+                Responsive websites designed around clear information and
+                straightforward ways to get in touch.
               </p>
             </div>
           </div>

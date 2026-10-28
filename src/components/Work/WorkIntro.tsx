@@ -30,7 +30,7 @@ export default function WorkIntro() {
       });
 
       tl.fromTo(
-        ".workintro-line .w-inner",
+        ".workintro-text-line .w-inner",
         { yPercent: 118 },
         { yPercent: 0, duration: 0.75, ease: "power3.out", stagger: 0.14 },
         0
@@ -84,7 +84,7 @@ export default function WorkIntro() {
       <div className="workintro-pin wrap">
         <div className="workintro-head mono dim">
           <span>
-            <span className="label-index">03</span> — Selected Work
+            <span className="label-index">03</span> | Selected Work
           </span>
           <span>Gallery</span>
         </div>
@@ -94,12 +94,12 @@ export default function WorkIntro() {
         </h2>
 
         <div className="workintro-title display" aria-hidden="true">
-          <span className="workintro-line">
+          <span className="workintro-text-line">
             <span className="w-mask">
               <span className="w-inner">Selected</span>
             </span>
           </span>
-          <span className="workintro-line">
+          <span className="workintro-text-line">
             <span className="w-mask">
               <span className="w-inner">Work</span>
             </span>

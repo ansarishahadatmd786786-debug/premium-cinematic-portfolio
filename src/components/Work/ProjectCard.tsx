@@ -6,7 +6,7 @@ import projects, { type Project } from "../../data/projects";
 import "./Work.css";
 
 /**
- * Cinematic project showcase — visual scales into view (0.85 → 1),
+ * Cinematic project showcase with a scaled entrance,
  * media parallaxes inside its frame, info rises in one by one.
  */
 export default function ProjectCard({
@@ -85,7 +85,7 @@ export default function ProjectCard({
     <article
       ref={rootRef}
       className={`project${flip ? " project--flip" : ""}`}
-      aria-label={`${project.name} — ${project.category}`}
+      aria-label={`${project.name}, ${project.category}`}
     >
       <span className="project-bgnum display" aria-hidden="true">
         {project.num}
@@ -98,13 +98,13 @@ export default function ProjectCard({
         target="_blank"
         rel="noopener noreferrer"
         data-cursor="view"
-        aria-label={`${project.name} — view live experience (opens in a new tab)`}
+        aria-label={`${project.name}, view live experience (opens in a new tab)`}
       >
         <div ref={mediaRef} className="project-media">
           {project.image ? (
             <img
               src={project.image}
-              alt={`${project.name} — website screenshot`}
+              alt={`${project.name} website screenshot`}
               width={1600}
               height={1040}
               loading={loading ?? (project.num === "01" ? "eager" : "lazy")}

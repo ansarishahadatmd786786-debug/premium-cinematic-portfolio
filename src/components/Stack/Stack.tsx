@@ -4,7 +4,7 @@ import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
 import "./Stack.css";
 
 /**
- * Honest stack — only tools genuinely used in this portfolio.
+ * Only tools used in this portfolio.
  * GSAP / Three.js / WebGL power this very page.
  */
 const groups = [

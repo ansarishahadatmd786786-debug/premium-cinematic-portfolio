@@ -1,5 +1,5 @@
 /* ============================================================
-   WORK — intro, gallery, project showcase
+   WORK: intro, gallery, project showcase
    ============================================================ */
 
 /* ---------- Work intro ---------- */
@@ -36,7 +36,7 @@
   letter-spacing: -0.03em;
 }
 
-.workintro-line {
+.workintro-text-line {
   display: block;
   overflow: hidden;
   padding-block: 0.045em;
@@ -79,6 +79,16 @@
   position: relative;
   background: var(--bg);
   padding-bottom: clamp(60px, 10vh, 140px);
+}
+
+.work-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
 }
 
 .project {
@@ -406,58 +416,6 @@
 
 .workintro-note {
   z-index: 2;
-}
-
-.workintro-note > p:first-child {
-  margin-bottom: 1.2rem;
-  color: var(--accent);
-  letter-spacing: 0.16em;
-  font-size: 13px;
-}
-
-.workintro-statement {
-  max-width: 14ch;
-  margin: 0 0 1.5rem;
-  color: var(--ink);
-  font-size: clamp(42px, 5.2vw, 82px);
-  line-height: 0.94;
-  letter-spacing: -0.045em;
-}
-
-.workintro-note > p:last-child {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.7;
-  letter-spacing: 0.04em;
-}
-
-.workintro-projects {
-  position: absolute;
-  right: var(--gutter);
-  bottom: clamp(80px, 14vh, 150px);
-  z-index: 1;
-}
-
-.workintro-projects .workintro-num {
-  display: block;
-}
-
-.workintro-line {
-  position: absolute;
-  right: 0;
-  bottom: -1.4rem;
-  width: clamp(80px, 12vw, 180px);
-  height: 1px;
-  padding: 0;
-  margin: 0;
-  background: var(--line-soft);
-}
-
-.workintro-line .accent {
-  display: block;
-  width: 34%;
-  height: 100%;
-  background: var(--accent);
 }
 
 @media (max-width: 900px) {

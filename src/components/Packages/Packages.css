@@ -1,0 +1,50 @@
+.packages {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line-soft);
+}
+
+.packages-title {
+  margin-bottom: clamp(42px, 7vh, 76px);
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.package-card {
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.package-name {
+  min-height: 2.2em;
+  font-size: clamp(22px, 2.6vw, 34px);
+}
+
+.package-details {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.package-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.package-details dd {
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -17,16 +17,21 @@ import Values from "./components/Values/Values";
 import CTA from "./components/CTA/CTA";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import CaseStudy from "./components/CaseStudy/CaseStudy";
+import Packages from "./components/Packages/Packages";
 
 export default function App() {
+  const reduced = usePrefersReducedMotion();
   const [showLoader] = useState(() => {
-    return sessionStorage.getItem("portfolio-loader-seen") !== "true";
+    return (
+      !reduced &&
+      sessionStorage.getItem("portfolio-loader-seen") !== "true"
+    );
   });
   /** loader exit has begun → hero intro + navbar entrance start */
   const [exitBegan, setExitBegan] = useState(!showLoader);
   /** loader fully finished → unmount it */
   const [loaderGone, setLoaderGone] = useState(!showLoader);
-  const reduced = usePrefersReducedMotion();
 
   /* smooth scroll (skipped for reduced-motion users) */
   useEffect(() => {
@@ -71,10 +76,10 @@ export default function App() {
         <Loader onBeginExit={handleBeginExit} onDone={handleDone} />
       )}
 
-      <Navbar started={exitBegan} />
+      <Navbar started={exitBegan} animateEntrance={showLoader} />
 
       <main id="main">
-        <Hero started={exitBegan} />
+        <Hero started={exitBegan} animateIntro={showLoader} />
         <About />
         <Capabilities />
         <WorkIntro />
@@ -83,6 +88,8 @@ export default function App() {
         <Process />
         <Values />
         <CTA />
+        <CaseStudy />
+        <Packages />
         <Contact />
       </main>
 

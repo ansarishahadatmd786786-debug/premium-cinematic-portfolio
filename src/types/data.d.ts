@@ -19,6 +19,17 @@ declare module "*/data/site" {
     year: string;
     canonical: string;
     socials: SocialLink[];
+    caseStudy: {
+      client: string;
+      problem: string;
+      built: string;
+      result: string;
+    };
+    packages: {
+      name: string;
+      price: string;
+      delivery: string;
+    }[];
   }
   export const navLinks: { id: string; label: string }[];
   const site: SiteConfig;
@@ -39,6 +50,7 @@ declare module "*/data/projects" {
     initials: string;
     hue: number;
     image: string | null;
+    featured: boolean;
   }
   const projects: Project[];
   export default projects;

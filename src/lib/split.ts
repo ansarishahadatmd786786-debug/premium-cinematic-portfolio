@@ -4,7 +4,7 @@
  * Returns the inner word spans (animate these).
  */
 export function splitWords(el: HTMLElement): HTMLElement[] {
-  // idempotent — reuse spans if the element was already split
+  // Idempotent: reuse spans if the element was already split.
   const existing = Array.from(
     el.querySelectorAll<HTMLElement>(".w-inner")
   );

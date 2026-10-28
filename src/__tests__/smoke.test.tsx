@@ -1,10 +1,10 @@
 /**
- * Smoke test — the full app must mount and render every section.
+ * Smoke test: the full app must mount and render every section.
  * matchMedia is stubbed to force reduced-motion + mobile state so
  * WebGL / Lenis / pinned timelines stay inert under jsdom.
  */
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 afterEach(cleanup);
 
@@ -36,13 +36,22 @@ describe("App", () => {
     expect(screen.getAllByText(/SHAHADAT/i).length).toBeGreaterThan(0);
   });
 
-  it(`renders all ${projects.length} projects with live links`, () => {
+  it("shows featured projects first and can reveal the full project list", () => {
     render(<App />);
+    const featuredLinks = screen
+      .getAllByRole("link")
+      .filter((a) => a.getAttribute("href")?.includes("vercel.app"));
+
+    expect(featuredLinks.length).toBe(
+      projects.filter((project) => project.featured).length * 2,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Show all projects" }));
     const liveLinks = screen
       .getAllByRole("link")
       .filter((a) => a.getAttribute("href")?.includes("vercel.app"));
-    // Every project has a visual link and a call-to-action link.
     expect(liveLinks.length).toBe(projects.length * 2);
+
     projects.forEach((p) => {
       const matches = liveLinks.filter((a) => a.getAttribute("href") === p.url);
       expect(matches.length).toBeGreaterThan(0);
@@ -56,7 +65,7 @@ describe("App", () => {
   it("renders contact email & phone from site config", () => {
     render(<App />);
     expect(
-      screen.getAllByText("ansarish8880@gmail.com").length
+      screen.getAllByText("ansarishahadatmd786786@gmail.com").length
     ).toBeGreaterThan(0);
     expect(screen.getAllByText("72176 58640").length).toBeGreaterThan(0);
   });
@@ -73,6 +82,8 @@ describe("App", () => {
       ".process",
       ".values",
       ".cta",
+      ".case-study",
+      ".packages",
       ".contact",
       ".footer",
     ];

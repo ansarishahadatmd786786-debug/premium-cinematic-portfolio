@@ -3,37 +3,27 @@ import { gsap } from "../../lib/gsap";
 import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
 import "./Values.css";
 
-/** Why work with me — genuine value, no invented claims. */
+/** Verifiable implementation details from this portfolio. */
 const values = [
   {
     n: "01",
-    title: "Modern digital design",
-    note: "Interfaces that look current and feel considered — no templates.",
+    title: "Responsive layouts",
+    note: "This portfolio reflows for narrow screens and desktop layouts.",
   },
   {
     n: "02",
-    title: "Responsive experiences",
-    note: "Designed for phones first, then refined up to widescreen.",
+    title: "Reduced-motion support",
+    note: "Motion effects are skipped when the device requests reduced motion.",
   },
   {
     n: "03",
-    title: "Performance-conscious build",
-    note: "Fast loads and smooth motion are part of the design, not extras.",
+    title: "Optimized project images",
+    note: "Project covers use WebP, reserved dimensions and lazy loading.",
   },
   {
     n: "04",
-    title: "Business-focused thinking",
-    note: "Every section is built around what your customer needs to do next.",
-  },
-  {
-    n: "05",
-    title: "Clear communication",
-    note: "Plain answers, visible progress, no jargon.",
-  },
-  {
-    n: "06",
-    title: "Attention to detail",
-    note: "Spacing, type and interaction tuned until they feel right.",
+    title: "Visible keyboard focus",
+    note: "Interactive controls have a visible focus style for keyboard users.",
   },
 ];
 
