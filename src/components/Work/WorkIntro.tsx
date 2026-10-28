@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../../lib/gsap";
 import { useIsMobile, usePrefersReducedMotion } from "../../hooks/useMediaQuery";
+import projects from "../../data/projects";
 import "./Work.css";
 
 /** Dramatic pinned transition into the project gallery. */
@@ -50,7 +51,7 @@ export default function WorkIntro() {
         .to(
           counter,
           {
-            v: 12,
+            v: projects.length,
             duration: 1.6,
             ease: "power1.inOut",
             onUpdate: () => {
@@ -89,7 +90,7 @@ export default function WorkIntro() {
         </div>
 
         <h2 id="workintro-title" className="sr-only">
-          Selected work — twelve concept projects
+          Selected work, {projects.length} concept projects
         </h2>
 
         <div className="workintro-title display" aria-hidden="true">
@@ -107,14 +108,13 @@ export default function WorkIntro() {
 
         <div className="workintro-count" aria-hidden="true">
           <span ref={numRef} className="workintro-num display">
-            12
+            {String(projects.length).padStart(2, "0")}
           </span>
           <span className="workintro-projects mono dim">Projects</span>
         </div>
 
         <p className="workintro-note dim" aria-hidden="true">
-          Twelve live concept websites across real industries — every one is a
-          working demo that opens in a new tab.
+          Explore {projects.length} concept websites through their live demos.
         </p>
       </div>
     </section>

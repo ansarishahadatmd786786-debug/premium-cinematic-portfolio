@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
-import site from "./src/data/site.js";
+import site from "./src/data/site";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

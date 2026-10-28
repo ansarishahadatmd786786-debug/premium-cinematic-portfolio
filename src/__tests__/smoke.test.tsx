@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Smoke test — the full app must mount and render every section.
  * matchMedia is stubbed to force reduced-motion + mobile state so
@@ -77,9 +76,14 @@ describe("App", () => {
       ".contact",
       ".footer",
     ];
-    const nodes = order.map((s) => container.querySelector(s));
-    nodes.forEach((n) => expect(n).not.toBeNull());
-    const positions = nodes.map((n) => n.compareDocumentPosition(nodes[0]));
-    expect(positions.every((p) => typeof p === "number")).toBe(true);
+    const nodes = order.map((selector) => {
+      const node = container.querySelector(selector);
+      if (!node) throw new Error(`Missing section ${selector}`);
+      return node;
+    });
+    nodes.slice(1).forEach((node, index) => {
+      const position = nodes[index].compareDocumentPosition(node);
+      expect(position & Node.DOCUMENT_POSITION_FOLLOWING).not.toBe(0);
+    });
   });
 });

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
-import type { Project } from "../../data/projects";
+import projects, { type Project } from "../../data/projects";
 import "./Work.css";
 
 /**
@@ -23,10 +23,7 @@ export default function ProjectCard({
   const mediaRef = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
 
-  console.log("PROJECT CHECK:", project.num, project.name, project.image);
-
   useEffect(() => {
-    if (import.meta.env.DEV) return;
     if (reduced) return;
 
     const ctx = gsap.context(() => {
@@ -124,7 +121,7 @@ export default function ProjectCard({
               </span>
               <span className="project-cover-meta mono">
                 <span className="dim">{project.category}</span>
-                <span className="dim">Site {project.num} / 12</span>
+                <span className="dim">Site {project.num} / {projects.length}</span>
               </span>
             </div>
           )}
