@@ -8,13 +8,13 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
-  { image: "/images/projects/smilecraft/cover.png" },
-  { image: "/images/projects/premium-jewellery-showroom/cover.png" },
-  { image: "/images/projects/ember-spice/cover.png" },
-  { image: "/images/projects/aurora-threads/cover.png" },
-  { image: "/images/projects/pee-kay/cover.png" },
-  { image: "/images/projects/lumiere/cover.png" },
-  { image: "/images/projects/aurelia-estates/cover.png" },
+  { image: "/images/projects/smilecraft/cover-hero.webp" },
+  { image: "/images/projects/premium-jewellery-showroom/cover-hero.webp" },
+  { image: "/images/projects/ember-spice/cover-hero.webp" },
+  { image: "/images/projects/aurora-threads/cover-hero.webp" },
+  { image: "/images/projects/pee-kay/cover-hero.webp" },
+  { image: "/images/projects/lumiere/cover-hero.webp" },
+  { image: "/images/projects/aurelia-estates/cover-hero.webp" },
 ];
 
 type ProjectFrameProps = {
@@ -148,7 +148,7 @@ function ProjectFrame({
         url={project.image}
         transparent
         opacity={targetOpacity}
-        scale={[5.14, 2.84, 1]}
+        scale={[5.14, 2.84]}
       />
 
       {/* Subtle cinematic contrast layer */}
@@ -188,11 +188,9 @@ function ProjectFrame({
 function FilmStrip({
   pointer,
   scroll,
-  lowPower,
 }: {
   pointer: MutableRefObject<THREE.Vector2>;
   scroll: MutableRefObject<number>;
-  lowPower: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const { viewport } = useThree();
@@ -270,6 +268,7 @@ export default function Scene({
   pointer,
   scroll,
   lowPower = false,
+  active = true,
 }: {
   pointer: MutableRefObject<THREE.Vector2>;
   scroll: MutableRefObject<number>;
@@ -278,6 +277,7 @@ export default function Scene({
 }) {
   return (
     <Canvas
+      frameloop={active ? "always" : "never"}
       dpr={lowPower ? [1, 1.2] : [1, 1.5]}
       camera={{
         position: [0, -0.18, 9],
@@ -296,7 +296,6 @@ export default function Scene({
       <FilmStrip
         pointer={pointer}
         scroll={scroll}
-        lowPower={lowPower}
       />
     </Canvas>
   );

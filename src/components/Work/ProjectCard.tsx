@@ -12,9 +12,11 @@ import "./Work.css";
 export default function ProjectCard({
   project,
   flip,
+  loading,
 }: {
   project: Project;
   flip: boolean;
+  loading?: "eager" | "lazy";
 }) {
   const rootRef = useRef<HTMLElement>(null);
   const visualRef = useRef<HTMLAnchorElement>(null);
@@ -24,7 +26,6 @@ export default function ProjectCard({
   console.log("PROJECT CHECK:", project.num, project.name, project.image);
 
   useEffect(() => {
-    // Temporarily disable GSAP in development while debugging project images.
     if (import.meta.env.DEV) return;
     if (reduced) return;
 
@@ -107,6 +108,9 @@ export default function ProjectCard({
             <img
               src={project.image}
               alt={`${project.name} — website screenshot`}
+              width={1600}
+              height={1040}
+              loading={loading ?? (project.num === "01" ? "eager" : "lazy")}
               decoding="async"
             />
           ) : (

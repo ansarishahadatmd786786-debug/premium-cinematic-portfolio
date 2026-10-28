@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { isWebGLAvailable } from "../../lib/webgl";
 import {
@@ -25,7 +26,7 @@ export default function Hero({ started }: { started: boolean }) {
   const rootRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const pointer = useRef({ x: 0, y: 0 });
+  const pointer = useRef(new THREE.Vector2());
   const scroll = useRef(0);
 
   const isMobile = useIsMobile();
@@ -49,8 +50,10 @@ export default function Hero({ started }: { started: boolean }) {
   useEffect(() => {
     if (isMobile) return;
     const onMove = (e: PointerEvent) => {
-      pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      pointer.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+      pointer.current.set(
+        (e.clientX / window.innerWidth) * 2 - 1,
+        (e.clientY / window.innerHeight) * 2 - 1,
+      );
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     return () => window.removeEventListener("pointermove", onMove);

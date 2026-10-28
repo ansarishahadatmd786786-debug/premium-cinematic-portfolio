@@ -19,10 +19,13 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 
 export default function App() {
+  const [showLoader] = useState(() => {
+    return sessionStorage.getItem("portfolio-loader-seen") !== "true";
+  });
   /** loader exit has begun → hero intro + navbar entrance start */
-  const [exitBegan, setExitBegan] = useState(false);
+  const [exitBegan, setExitBegan] = useState(!showLoader);
   /** loader fully finished → unmount it */
-  const [loaderGone, setLoaderGone] = useState(false);
+  const [loaderGone, setLoaderGone] = useState(!showLoader);
   const reduced = usePrefersReducedMotion();
 
   /* smooth scroll (skipped for reduced-motion users) */
@@ -44,6 +47,12 @@ export default function App() {
     requestAnimationFrame(() => ScrollTrigger.refresh());
   }, []);
 
+  useEffect(() => {
+    if (showLoader) {
+      sessionStorage.setItem("portfolio-loader-seen", "true");
+    }
+  }, [showLoader]);
+
   /* recalc layouts once everything is mounted */
   useEffect(() => {
     const t = window.setTimeout(() => ScrollTrigger.refresh(), 800);
@@ -58,7 +67,7 @@ export default function App() {
 
       <Cursor />
 
-      {!loaderGone && (
+      {showLoader && !loaderGone && (
         <Loader onBeginExit={handleBeginExit} onDone={handleDone} />
       )}
 

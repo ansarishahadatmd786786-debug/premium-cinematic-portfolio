@@ -37,13 +37,13 @@ describe("App", () => {
     expect(screen.getAllByText(/SHAHADAT/i).length).toBeGreaterThan(0);
   });
 
-  it("renders all 12 projects with live links", () => {
+  it(`renders all ${projects.length} projects with live links`, () => {
     render(<App />);
     const liveLinks = screen
       .getAllByRole("link")
       .filter((a) => a.getAttribute("href")?.includes("vercel.app"));
-    // 12 visual anchors + 12 CTA links = 24
-    expect(liveLinks.length).toBe(24);
+    // Every project has a visual link and a call-to-action link.
+    expect(liveLinks.length).toBe(projects.length * 2);
     projects.forEach((p) => {
       const matches = liveLinks.filter((a) => a.getAttribute("href") === p.url);
       expect(matches.length).toBeGreaterThan(0);

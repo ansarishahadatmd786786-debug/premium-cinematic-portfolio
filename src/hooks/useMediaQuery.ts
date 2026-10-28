@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 export function useMediaQuery(query: string, initial = false): boolean {
-  const [matches, setMatches] = useState(initial);
+  const [matches, setMatches] = useState(() =>
+    typeof window !== "undefined" && "matchMedia" in window
+      ? window.matchMedia(query).matches
+      : initial,
+  );
 
   useEffect(() => {
     const mql = window.matchMedia(query);

@@ -87,7 +87,14 @@ export default function About() {
 
         <div className="about-body grid-12">
           <figure className="about-photo about-fade">
-            <img src="/images/shahadat-profile.png" alt="Shahadat — Web Developer" />
+            <img
+              src="/images/shahadat-profile.webp"
+              alt="Shahadat — Web Developer"
+              width={1145}
+              height={1374}
+              loading="lazy"
+              decoding="async"
+            />
             <span className="about-photo-accent" aria-hidden="true" />
           </figure>
 

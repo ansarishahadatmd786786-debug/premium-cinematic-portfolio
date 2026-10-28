@@ -22,7 +22,7 @@ const projects = [
     type: "Concept Project",
     initials: "SD",
     hue: 190,
-    image: "/images/projects/smilecraft/cover.png",
+    image: "/images/projects/smilecraft/cover.webp",
 
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     type: "Concept Project",
     initials: "VH",
     hue: 158,
-   image: "/images/projects/velacare/cover.png",
+   image: "/images/projects/velacare/cover.webp",
 
   },
   {
@@ -54,7 +54,7 @@ const projects = [
     type: "Concept Project",
     initials: "ES",
     hue: 22,
-    image: "/images/projects/ember-spice/cover.png",
+    image: "/images/projects/ember-spice/cover.webp",
   },
   {
     id: "lumea",
@@ -69,7 +69,7 @@ const projects = [
     type: "Concept Project",
     initials: "LU",
     hue: 330,
-    image: "/images/projects/lumea/cover.png",
+    image: "/images/projects/lumea/cover.webp",
   },
   {
     id: "ironvault",
@@ -84,7 +84,7 @@ const projects = [
     type: "Concept Project",
     initials: "IF",
     hue: 6,
-    image: "/images/projects/ironvault/cover.png",
+    image: "/images/projects/ironvault/cover.webp",
   },
   {
     id: "nexora",
@@ -99,7 +99,7 @@ const projects = [
     type: "Concept Project",
     initials: "NA",
     hue: 222,
-    image: "/images/projects/nexora/cover.png",
+    image: "/images/projects/nexora/cover.webp",
   },
   {
     id: "aurelia-estates",
@@ -114,7 +114,7 @@ const projects = [
     type: "Concept Project",
     initials: "AE",
     hue: 42,
-    image: "/images/projects/aurelia-estates/cover.png",
+    image: "/images/projects/aurelia-estates/cover.webp",
 
   },
   {
@@ -130,7 +130,7 @@ const projects = [
     type: "Concept Project",
     initials: "VL",
     hue: 46,
-    image: "/images/projects/veritas/cover.png",
+    image: "/images/projects/veritas/cover.webp",
   },
   {
     id: "aurora-threads",
@@ -145,7 +145,7 @@ const projects = [
     type: "Concept Project",
     initials: "AT",
     hue: 275,
-   image: "/images/projects/aurora-threads/cover.png",
+   image: "/images/projects/aurora-threads/cover.webp",
   },
   {
     id: "aurelia-resort",
@@ -160,7 +160,7 @@ const projects = [
     type: "Concept Project",
     initials: "AG",
     hue: 196,
-    image: "/images/projects/aurelia-resort/cover.png",
+    image: "/images/projects/aurelia-resort/cover.webp",
 
   },
   {
@@ -176,7 +176,7 @@ const projects = [
     type: "Concept Project",
     initials: "LP",
     hue: 34,
-    image: "/images/projects/lumiere/cover.png",
+    image: "/images/projects/lumiere/cover.webp",
   },
   {
     id: "pee-kay",
@@ -191,7 +191,7 @@ const projects = [
     type: "Concept Project",
     initials: "PK",
     hue: 28,
-    image: "/images/projects/pee-kay/cover.png",
+    image: "/images/projects/pee-kay/cover.webp",
   },
   {
     id: "premium-jewellery-showroom",
@@ -206,7 +206,7 @@ const projects = [
     type: "Concept Project",
     initials: "PJ",
     hue: 42,
-    image: "/images/projects/premium-jewellery-showroom/cover.png",
+    image: "/images/projects/premium-jewellery-showroom/cover.webp",
   },
 ];
 

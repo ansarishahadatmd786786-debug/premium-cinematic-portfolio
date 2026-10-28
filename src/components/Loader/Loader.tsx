@@ -5,7 +5,7 @@ import "./Loader.css";
 
 /**
  * Cinematic loader — brand + 000 → 100 progress.
- * Runs once on initial page load (~1.5s), then slides away.
+ * Runs once per session on initial page load, then slides away.
  * onBeginExit fires as the panel starts to lift, so the hero
  * intro can begin underneath — one continuous transition.
  */
@@ -36,26 +36,26 @@ export default function Loader({
       tl.fromTo(
         ".loader-brand .w-inner",
         { yPercent: 115 },
-        { yPercent: 0, duration: 0.9, stagger: 0.045 },
-        0.05
+        { yPercent: 0, duration: 0.45, stagger: 0.025 },
+        0.02
       )
         .fromTo(
           ".loader-role",
           { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          0.35
+          { opacity: 1, y: 0, duration: 0.3 },
+          0.16
         )
         .fromTo(
           ".loader-foot",
           { opacity: 0 },
-          { opacity: 1, duration: 0.6 },
-          0.3
+          { opacity: 1, duration: 0.3 },
+          0.14
         )
         .to(
           counter,
           {
             v: 100,
-            duration: 1.15,
+            duration: 0.55,
             ease: "power2.inOut",
             onUpdate: () => {
               if (countRef.current) {
@@ -65,18 +65,18 @@ export default function Loader({
               }
             },
           },
-          0.15
+          0.08
         )
         .to(
           barRef.current,
-          { scaleX: 1, duration: 1.15, ease: "power2.inOut" },
-          0.15
+          { scaleX: 1, duration: 0.55, ease: "power2.inOut" },
+          0.08
         )
-        .add(() => onBeginExit(), "+=0.12")
-        .to(".loader-inner", { yPercent: -24, opacity: 0, duration: 0.7, ease: "power3.in" }, "<")
+        .add(() => onBeginExit(), "+=0.06")
+        .to(".loader-inner", { yPercent: -24, opacity: 0, duration: 0.25, ease: "power3.in" }, "<")
         .to(
           rootRef.current,
-          { yPercent: -100, duration: 0.9, ease: "power4.inOut" },
+          { yPercent: -100, duration: 0.35, ease: "power4.inOut" },
           "<0.08"
         );
     }, rootRef);
