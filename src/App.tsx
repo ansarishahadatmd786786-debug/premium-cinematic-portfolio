@@ -17,13 +17,23 @@ import Values from "./components/Values/Values";
 import CTA from "./components/CTA/CTA";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import CaseStudy from "./components/CaseStudy/CaseStudy";
+import Packages from "./components/Packages/Packages";
 
 export default function App() {
-  /** loader exit has begun → hero intro + navbar entrance start */
-  const [exitBegan, setExitBegan] = useState(false);
-  /** loader fully finished → unmount it */
-  const [loaderGone, setLoaderGone] = useState(false);
   const reduced = usePrefersReducedMotion();
+  const [showLoader] = useState(() => {
+    if (reduced) return false;
+    try {
+      return sessionStorage.getItem("portfolio-loader-seen") !== "true";
+    } catch {
+      return true;
+    }
+  });
+  /** loader exit has begun → hero intro + navbar entrance start */
+  const [exitBegan, setExitBegan] = useState(!showLoader);
+  /** loader fully finished → unmount it */
+  const [loaderGone, setLoaderGone] = useState(!showLoader);
 
   /* smooth scroll (skipped for reduced-motion users) */
   useEffect(() => {
@@ -44,6 +54,16 @@ export default function App() {
     requestAnimationFrame(() => ScrollTrigger.refresh());
   }, []);
 
+  useEffect(() => {
+    if (showLoader) {
+      try {
+        sessionStorage.setItem("portfolio-loader-seen", "true");
+      } catch {
+        // Keep the loader for this visit when session storage is unavailable.
+      }
+    }
+  }, [showLoader]);
+
   /* recalc layouts once everything is mounted */
   useEffect(() => {
     const t = window.setTimeout(() => ScrollTrigger.refresh(), 800);
@@ -58,14 +78,14 @@ export default function App() {
 
       <Cursor />
 
-      {!loaderGone && (
+      {showLoader && !loaderGone && (
         <Loader onBeginExit={handleBeginExit} onDone={handleDone} />
       )}
 
-      <Navbar started={exitBegan} />
+      <Navbar started={exitBegan} animateEntrance={showLoader} />
 
       <main id="main">
-        <Hero started={exitBegan} />
+        <Hero started={exitBegan} animateIntro={showLoader} />
         <About />
         <Capabilities />
         <WorkIntro />
@@ -74,6 +94,8 @@ export default function App() {
         <Process />
         <Values />
         <CTA />
+        <CaseStudy />
+        <Packages />
         <Contact />
       </main>
 

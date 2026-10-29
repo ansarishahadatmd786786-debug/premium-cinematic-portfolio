@@ -1,5 +1,5 @@
 /**
- * Project data — kept separate from UI components.
+ * Project data kept separate from UI components.
  *
  * SCREENSHOTS: to show the real site capture for a project,
  * drop a file into  public/images/projects/<slug>/cover.jpg
@@ -20,9 +20,12 @@ const projects = [
     focus: ["Trust", "Lead generation", "Responsive experience"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "SD",
     hue: 190,
-    image: "/images/projects/smilecraft/cover.png",
+    image: "/images/projects/smilecraft/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 921,
 
   },
   {
@@ -36,9 +39,12 @@ const projects = [
     focus: ["Information architecture", "Responsive experience"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "VH",
     hue: 158,
-   image: "/images/projects/velacare/cover.png",
+   image: "/images/projects/velacare/cover.webp",
+   imageWidth: 1600,
+   imageHeight: 929,
 
   },
   {
@@ -52,9 +58,12 @@ const projects = [
     focus: ["Visual identity", "Conversion"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "ES",
     hue: 22,
-    image: "/images/projects/ember-spice/cover.png",
+    image: "/images/projects/ember-spice/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 852,
   },
   {
     id: "lumea",
@@ -67,9 +76,12 @@ const projects = [
     focus: ["Visual identity", "Responsive experience"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "LU",
     hue: 330,
-    image: "/images/projects/lumea/cover.png",
+    image: "/images/projects/lumea/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 745,
   },
   {
     id: "ironvault",
@@ -82,9 +94,12 @@ const projects = [
     focus: ["Visual identity", "Lead generation"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "IF",
     hue: 6,
-    image: "/images/projects/ironvault/cover.png",
+    image: "/images/projects/ironvault/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 724,
   },
   {
     id: "nexora",
@@ -97,9 +112,12 @@ const projects = [
     focus: ["Information architecture", "Lead generation"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "NA",
     hue: 222,
-    image: "/images/projects/nexora/cover.png",
+    image: "/images/projects/nexora/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 819,
   },
   {
     id: "aurelia-estates",
@@ -112,9 +130,12 @@ const projects = [
     focus: ["Immersive presentation", "Lead generation"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "AE",
     hue: 42,
-    image: "/images/projects/aurelia-estates/cover.png",
+    image: "/images/projects/aurelia-estates/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 801,
 
   },
   {
@@ -128,9 +149,12 @@ const projects = [
     focus: ["Trust", "Information architecture"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "VL",
     hue: 46,
-    image: "/images/projects/veritas/cover.png",
+    image: "/images/projects/veritas/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 934,
   },
   {
     id: "aurora-threads",
@@ -143,9 +167,12 @@ const projects = [
     focus: ["E-commerce", "Visual identity"],
     tech: ["React", "JavaScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "AT",
     hue: 275,
-   image: "/images/projects/aurora-threads/cover.png",
+   image: "/images/projects/aurora-threads/cover.webp",
+   imageWidth: 1600,
+   imageHeight: 855,
   },
   {
     id: "aurelia-resort",
@@ -158,9 +185,12 @@ const projects = [
     focus: ["Immersive presentation", "Conversion"],
     tech: ["React", "Three.js", "GSAP", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "AG",
     hue: 196,
-    image: "/images/projects/aurelia-resort/cover.png",
+    image: "/images/projects/aurelia-resort/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 921,
 
   },
   {
@@ -174,9 +204,12 @@ const projects = [
     focus: ["Immersive presentation", "E-commerce"],
     tech: ["React", "Three.js", "GSAP", "Vercel"],
     type: "Concept Project",
+    featured: false,
     initials: "LP",
     hue: 34,
-    image: "/images/projects/lumiere/cover.png",
+    image: "/images/projects/lumiere/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 917,
   },
   {
     id: "pee-kay",
@@ -189,9 +222,12 @@ const projects = [
     focus: ["E-commerce", "Lead generation"],
     tech: ["React", "Three.js", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "PK",
     hue: 28,
-    image: "/images/projects/pee-kay/cover.png",
+    image: "/images/projects/pee-kay/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 889,
   },
   {
     id: "premium-jewellery-showroom",
@@ -204,9 +240,12 @@ const projects = [
     focus: ["Luxury presentation", "Product catalogue", "Lead generation"],
     tech: ["React", "TypeScript", "CSS", "Vercel"],
     type: "Concept Project",
+    featured: true,
     initials: "PJ",
     hue: 42,
-    image: "/images/projects/premium-jewellery-showroom/cover.png",
+    image: "/images/projects/premium-jewellery-showroom/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 916,
   },
 ];
 

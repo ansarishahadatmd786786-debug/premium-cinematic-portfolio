@@ -1,7 +1,9 @@
 node_modules/
 dist/
+.asset-originals/
 .env
 .env.*
+!.env.example
 .DS_Store
 *.log
 .vscode/

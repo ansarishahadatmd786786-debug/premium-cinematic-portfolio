@@ -10,7 +10,7 @@ import site from "../../data/site";
 import "./CTA.css";
 
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
-  "Project enquiry — I'd like a website"
+  "Project enquiry: I'd like a website"
 )}`;
 
 export default function CTA() {

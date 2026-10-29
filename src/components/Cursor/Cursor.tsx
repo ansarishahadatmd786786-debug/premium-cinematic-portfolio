@@ -7,7 +7,7 @@ import "./Cursor.css";
 type CursorMode = "dot" | "ring" | "view";
 
 /**
- * Custom cursor — desktop (fine pointer) only.
+ * Custom cursor for desktop fine pointers only.
  * dot   → default state
  * ring  → hovering links / buttons
  * view  → "[data-cursor=view]" elements (project visuals)

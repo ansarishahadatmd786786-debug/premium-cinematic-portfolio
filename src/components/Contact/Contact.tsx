@@ -1,18 +1,33 @@
-import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
 import site from "../../data/site";
+import { getSectionIndices } from "../../lib/sections";
 import "./Contact.css";
 
-/**
- * Frontend-only form: submit opens a pre-filled email draft.
- * Clearly communicated — no fake backend.
- */
+const sectionIndices = getSectionIndices();
+
 export default function Contact() {
   const rootRef = useRef<HTMLElement>(null);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error" | "draft"
+  >("idle");
+  const [feedback, setFeedback] = useState("");
   const reduced = usePrefersReducedMotion();
+  const configuredProvider = import.meta.env.VITE_FORM_PROVIDER?.trim();
+  const formProvider =
+    configuredProvider === "web3forms" ||
+    configuredProvider === "formspree" ||
+    configuredProvider === "generic"
+      ? configuredProvider
+      : "generic";
+  const configuredEndpoint = import.meta.env.VITE_FORM_ENDPOINT?.trim();
+  const formEndpoint =
+    formProvider === "web3forms"
+      ? configuredEndpoint || "https://api.web3forms.com/submit"
+      : configuredEndpoint;
+  const formKey = import.meta.env.VITE_FORM_KEY?.trim();
 
   useEffect(() => {
     if (reduced) return;
@@ -33,28 +48,96 @@ export default function Contact() {
     return () => ctx.revert();
   }, [reduced]);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const name = String(data.get("name") || "");
     const email = String(data.get("email") || "");
     const business = String(data.get("business") || "");
     const message = String(data.get("message") || "");
 
-    const subject = `Project enquiry — ${business || name || "New website"}`;
+    if (String(data.get("website") || "").trim()) {
+      form.reset();
+      setStatus("success");
+      setFeedback("Thank you. Your message has been received.");
+      return;
+    }
+
+    const subject = `Project enquiry: ${business || name || "New website"}`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
-      `Business / Project: ${business || "—"}`,
+      `Business / Project: ${business || "Not specified"}`,
       "",
       "Message:",
       message,
     ].join("\n");
 
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    if (!formEndpoint) {
+      window.open(
+        `mailto:${site.email}?subject=${encodeURIComponent(
+          subject,
+        )}&body=${encodeURIComponent(body)}`,
+        "_self",
+      );
+      setStatus("draft");
+      setFeedback(
+        "Your email app should open with a draft. The enquiry is sent only after you send that email.",
+      );
+      return;
+    }
+
+    setStatus("loading");
+    setFeedback("Sending your message...");
+
+    try {
+      const requestBody =
+        formProvider === "web3forms"
+          ? {
+              access_key: formKey || "",
+              name,
+              email,
+              business,
+              message,
+              subject,
+              from_name: "Portfolio",
+            }
+          : { name, email, business, message };
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+      if (!response.ok) {
+        throw new Error(`The form service returned ${response.status}.`);
+      }
+      if (formProvider === "web3forms") {
+        const result: unknown = await response.json();
+        if (
+          typeof result === "object" &&
+          result !== null &&
+          "success" in result &&
+          result.success === false
+        ) {
+          throw new Error("The form service did not accept the enquiry.");
+        }
+      }
+
+      form.reset();
+      setStatus("success");
+      setFeedback("Thanks. Your message has been sent.");
+    } catch (error) {
+      setStatus("error");
+      setFeedback(
+        error instanceof Error
+          ? `We could not send your message. ${error.message} You can email ${site.email} instead.`
+          : `We could not send your message. Please email ${site.email} instead.`,
+      );
+    }
   };
 
   return (
@@ -66,7 +149,7 @@ export default function Contact() {
     >
       <div className="wrap">
         <div className="label-row mono">
-          <span className="label-index">07</span>
+          <span className="label-index">{sectionIndices.contact}</span>
           <span>Contact</span>
           <span className="label-note dim">Start a project</span>
         </div>
@@ -77,7 +160,7 @@ export default function Contact() {
               Tell me about your project<span className="accent">.</span>
             </h2>
             <p className="contact-fade dim contact-note">
-              A few lines are enough — your business, what you need the website
+              A few lines are enough: your business, what you need the website
               to do, and any links you like. I&rsquo;ll reply personally.
             </p>
 
@@ -92,11 +175,23 @@ export default function Contact() {
                 </a>
               </li>
               <li className="contact-fade contact-row-item">
+                <a
+                  className="btn btn--ghost contact-whatsapp"
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Shahadat, I'd like to discuss a website project.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={15} strokeWidth={1.75} aria-hidden="true" />
+                  Chat on WhatsApp
+                  <ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" />
+                </a>
+              </li>
+              <li className="contact-fade contact-row-item">
                 <span className="mono dim contact-row-label">
                   <Phone size={13} strokeWidth={1.5} aria-hidden="true" />
                   Phone
                 </span>
-                <a className="u-link contact-row-value" href={`tel:${site.phone}`}>
+                <a className="u-link contact-row-value" href={`tel:+91${site.phone}`}>
                   {site.phoneDisplay}
                 </a>
               </li>
@@ -158,15 +253,36 @@ export default function Contact() {
               />
             </div>
 
+            <div className="contact-honeypot" aria-hidden="true">
+              <label htmlFor="cf-website">Leave this field empty</label>
+              <input
+                id="cf-website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="contact-fade contact-submit">
-              <button type="submit" className="btn btn--ghost" data-cursor="link">
-                Send via email
+              <button
+                type="submit"
+                className="btn btn--ghost"
+                data-cursor="link"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Sending" : "Send enquiry"}
                 <ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" />
               </button>
-              <p className="mono dim contact-hint">
-                {sent
-                  ? "Email draft opened — press send in your email app."
-                  : "Opens your email app pre-filled. Nothing is stored on this site."}
+              <p
+                className="mono dim contact-hint"
+                aria-live="polite"
+                role={status === "error" ? "alert" : undefined}
+              >
+                {feedback ||
+                  (formEndpoint
+                    ? "Your message is sent to the configured form service. Nothing is stored on this site."
+                    : "No form service is configured. Submitting opens an email draft.")}
               </p>
             </div>
           </form>

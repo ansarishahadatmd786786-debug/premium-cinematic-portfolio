@@ -87,21 +87,27 @@ export default function About() {
 
         <div className="about-body grid-12">
           <figure className="about-photo about-fade">
-            <img src="/images/shahadat-profile.png" alt="Shahadat — Web Developer" />
+            <img
+              src="/images/shahadat-profile.webp"
+              alt="Shahadat, Web Developer"
+              width={1145}
+              height={1374}
+              loading="lazy"
+              decoding="async"
+            />
             <span className="about-photo-accent" aria-hidden="true" />
           </figure>
 
           <div className="about-copy">
             <p className="about-fade about-lead">
-              I&rsquo;m Shahadat — a web developer building modern, responsive,
-              conversion&#8209;focused websites for businesses and growing
-              brands.
+              I&rsquo;m Shahadat, a web developer building modern, responsive
+              websites for businesses and growing brands.
             </p>
             <p className="about-fade dim">
               Every project starts with your business, not the code: what you
               offer, who it&rsquo;s for, and what the site needs to achieve.
-              From there it&rsquo;s design, build, refine, launch — with
-              performance and clarity treated as features, not afterthoughts.
+              From there it&rsquo;s design, build, refine and launch, with
+              performance and clarity treated as part of the work.
             </p>
           </div>
 

@@ -2,30 +2,28 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
-import type { Project } from "../../data/projects";
+import projects, { type Project } from "../../data/projects";
 import "./Work.css";
 
 /**
- * Cinematic project showcase — visual scales into view (0.85 → 1),
+ * Cinematic project showcase with a scaled entrance,
  * media parallaxes inside its frame, info rises in one by one.
  */
 export default function ProjectCard({
   project,
   flip,
+  loading,
 }: {
   project: Project;
   flip: boolean;
+  loading?: "eager" | "lazy";
 }) {
   const rootRef = useRef<HTMLElement>(null);
   const visualRef = useRef<HTMLAnchorElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
 
-  console.log("PROJECT CHECK:", project.num, project.name, project.image);
-
   useEffect(() => {
-    // Temporarily disable GSAP in development while debugging project images.
-    if (import.meta.env.DEV) return;
     if (reduced) return;
 
     const ctx = gsap.context(() => {
@@ -87,7 +85,7 @@ export default function ProjectCard({
     <article
       ref={rootRef}
       className={`project${flip ? " project--flip" : ""}`}
-      aria-label={`${project.name} — ${project.category}`}
+      aria-label={`${project.name}, ${project.category}`}
     >
       <span className="project-bgnum display" aria-hidden="true">
         {project.num}
@@ -100,19 +98,29 @@ export default function ProjectCard({
         target="_blank"
         rel="noopener noreferrer"
         data-cursor="view"
-        aria-label={`${project.name} — view live experience (opens in a new tab)`}
+        aria-label={`${project.name}, view live experience (opens in a new tab)`}
       >
-        <div ref={mediaRef} className="project-media">
+        <div
+          ref={mediaRef}
+          className="project-media"
+          style={{
+            aspectRatio: project.image
+              ? `${project.imageWidth} / ${project.imageHeight}`
+              : undefined,
+          }}
+        >
           {project.image ? (
             <img
               src={project.image}
-              alt={`${project.name} — website screenshot`}
+              alt={`${project.name} website screenshot`}
+              width={project.imageWidth}
+              height={project.imageHeight}
+              loading={loading ?? (project.num === "01" ? "eager" : "lazy")}
               decoding="async"
             />
           ) : (
             <div
               className="project-cover"
-              style={{ "--hue": project.hue } as React.CSSProperties}
             >
               <span className="project-cover-grid" />
               <span className="project-cover-initials display">
@@ -120,7 +128,7 @@ export default function ProjectCard({
               </span>
               <span className="project-cover-meta mono">
                 <span className="dim">{project.category}</span>
-                <span className="dim">Site {project.num} / 12</span>
+                <span className="dim">Site {project.num} / {projects.length}</span>
               </span>
             </div>
           )}

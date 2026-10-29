@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
   background: radial-gradient(
     circle,
-    rgba(200, 255, 61, 0.055) 0%,
+    rgba(232, 169, 60, 0.055) 0%,
     transparent 62%
   );
   pointer-events: none;
@@ -51,7 +51,7 @@
 
 .cta-btn {
   padding: 1.4rem 2.8rem;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .cta-direct {

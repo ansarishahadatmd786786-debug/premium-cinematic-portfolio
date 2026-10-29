@@ -1,16 +1,16 @@
 /* ============================================================
-   SHAHADAT — Portfolio V2
+   SHAHADAT Portfolio V2
    Dark cinematic digital studio design system
    ============================================================ */
 
 :root {
-  --bg: #080808;
-  --bg-2: #111111;
-  --ink: #f3f1ec;
-  --ink-dim: #9a9a96;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-soft: rgba(255, 255, 255, 0.07);
-  --accent: #c8ff3d;
+  --bg: #0F0E0C;
+  --bg-2: #1A1814;
+  --line: rgba(244, 241, 234, 0.14);
+  --ink: #F4F1EA;
+  --ink-dim: #B8B4A8;
+  --line-soft: rgba(244, 241, 234, 0.08);
+  --accent: #E8A93C;
 
   --f-display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --f-body: "Inter", system-ui, sans-serif;
@@ -95,7 +95,7 @@ ol {
 
 ::selection {
   background: var(--accent);
-  color: #0a0a0a;
+  color: #0F0E0C;
 }
 
 /* Custom cursor takes over on fine pointers only */
@@ -165,9 +165,9 @@ ol {
   left: 12px;
   z-index: 12000;
   background: var(--accent);
-  color: #0a0a0a;
+  color: #0F0E0C;
   font-family: var(--f-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   padding: 10px 18px;
   transform: translateY(-200%);
@@ -201,7 +201,7 @@ ol {
 
 .mono {
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -225,7 +225,7 @@ ol {
   align-items: center;
   gap: 1.1rem;
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -293,7 +293,7 @@ ol {
   border: 1px solid var(--line);
   border-radius: 999px;
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink);
@@ -315,7 +315,7 @@ ol {
 
 .btn--solid {
   background: var(--ink);
-  color: #0b0b0b;
+  color: #0F0E0C;
   border-color: var(--ink);
 }
 .btn--solid:hover,
@@ -336,7 +336,7 @@ ol {
   align-items: center;
   gap: 0.5em;
   font-family: var(--f-mono);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -351,7 +351,7 @@ ol {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(200, 255, 61, 0.7);
+  box-shadow: 0 0 10px rgba(232, 169, 60, 0.55);
   flex: none;
 }
 

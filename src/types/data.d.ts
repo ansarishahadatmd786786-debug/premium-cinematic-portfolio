@@ -13,12 +13,24 @@ declare module "*/data/site" {
     tagline: string;
     email: string;
     phone: string;
+    whatsapp: string;
     phoneDisplay: string;
     location: string;
     availability: string;
     year: string;
     canonical: string;
     socials: SocialLink[];
+    caseStudy: {
+      client: string;
+      problem: string;
+      built: string;
+      result: string;
+    };
+    packages: {
+      name: string;
+      price: string;
+      delivery: string;
+    }[];
   }
   export const navLinks: { id: string; label: string }[];
   const site: SiteConfig;
@@ -39,6 +51,9 @@ declare module "*/data/projects" {
     initials: string;
     hue: number;
     image: string | null;
+    imageWidth: number;
+    imageHeight: number;
+    featured: boolean;
   }
   const projects: Project[];
   export default projects;

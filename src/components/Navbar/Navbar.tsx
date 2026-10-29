@@ -10,7 +10,13 @@ import "./Navbar.css";
  * Left: SHAHADAT · Right: inline links (desktop) + MENU button.
  * MENU opens a fullscreen overlay (all viewports, primary on mobile).
  */
-export default function Navbar({ started }: { started: boolean }) {
+export default function Navbar({
+  started,
+  animateEntrance,
+}: {
+  started: boolean;
+  animateEntrance: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const rootRef = useRef<HTMLElement>(null);
@@ -82,13 +88,13 @@ export default function Navbar({ started }: { started: boolean }) {
 
   /* ---------- entrance after loader ---------- */
   useEffect(() => {
-    if (!started || !rootRef.current) return;
+    if (!started || !animateEntrance || !rootRef.current) return;
     gsap.fromTo(
       rootRef.current,
       { y: -28, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.15 }
     );
-  }, [started]);
+  }, [started, animateEntrance]);
 
   const go = useCallback((id: string) => {
     setOpen(false);
@@ -110,7 +116,7 @@ export default function Navbar({ started }: { started: boolean }) {
         <button
           className="nav-brand mono"
           onClick={() => go("home")}
-          aria-label="Shahadat — back to top"
+          aria-label="Shahadat, back to top"
         >
           SHAHADAT<span className="accent">.</span>
         </button>

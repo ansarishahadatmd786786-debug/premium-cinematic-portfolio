@@ -7,21 +7,26 @@ type Project = {
   image: string;
 };
 
+export type PointerPosition = {
+  x: number;
+  y: number;
+};
+
 const PROJECTS: Project[] = [
-  { image: "/images/projects/smilecraft/cover.png" },
-  { image: "/images/projects/premium-jewellery-showroom/cover.png" },
-  { image: "/images/projects/ember-spice/cover.png" },
-  { image: "/images/projects/aurora-threads/cover.png" },
-  { image: "/images/projects/pee-kay/cover.png" },
-  { image: "/images/projects/lumiere/cover.png" },
-  { image: "/images/projects/aurelia-estates/cover.png" },
+  { image: "/images/projects/smilecraft/cover-hero.webp" },
+  { image: "/images/projects/premium-jewellery-showroom/cover-hero.webp" },
+  { image: "/images/projects/ember-spice/cover-hero.webp" },
+  { image: "/images/projects/aurora-threads/cover-hero.webp" },
+  { image: "/images/projects/pee-kay/cover-hero.webp" },
+  { image: "/images/projects/lumiere/cover-hero.webp" },
+  { image: "/images/projects/aurelia-estates/cover-hero.webp" },
 ];
 
 type ProjectFrameProps = {
   project: Project;
   index: number;
   total: number;
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
 };
 
@@ -140,7 +145,7 @@ function ProjectFrame({
       {/* Outer frame */}
       <mesh position={[0, 0, -0.045]}>
         <planeGeometry args={[5.42, 3.1]} />
-        <meshBasicMaterial color="#050505" />
+        <meshBasicMaterial color="#0F0E0C" />
       </mesh>
 
       {/* Project screenshot */}
@@ -148,25 +153,25 @@ function ProjectFrame({
         url={project.image}
         transparent
         opacity={targetOpacity}
-        scale={[5.14, 2.84, 1]}
+        scale={[5.14, 2.84]}
       />
 
       {/* Subtle cinematic contrast layer */}
       <mesh position={[0, 0, 0.025]}>
         <planeGeometry args={[5.14, 2.84]} />
         <meshBasicMaterial
-          color="#050505"
+          color="#0F0E0C"
           transparent
           opacity={offset === 0 ? 0.1 : 0.23}
           depthWrite={false}
         />
       </mesh>
 
-      {/* Thin lime cinematic edge */}
+      {/* Thin amber cinematic edge */}
       <mesh position={[0, 1.42, 0.045]}>
         <planeGeometry args={[5.14, 0.014]} />
         <meshBasicMaterial
-          color="#d7ff5f"
+          color="#E8A93C"
           transparent
           opacity={offset === 0 ? 0.55 : 0.18}
         />
@@ -188,11 +193,9 @@ function ProjectFrame({
 function FilmStrip({
   pointer,
   scroll,
-  lowPower,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
-  lowPower: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const { viewport } = useThree();
@@ -243,7 +246,7 @@ function FilmStrip({
 function CameraRig({
   pointer,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
 }) {
   const { camera } = useThree();
 
@@ -270,14 +273,16 @@ export default function Scene({
   pointer,
   scroll,
   lowPower = false,
+  active = true,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
   lowPower?: boolean;
   active?: boolean;
 }) {
   return (
     <Canvas
+      frameloop={active ? "always" : "never"}
       dpr={lowPower ? [1, 1.2] : [1, 1.5]}
       camera={{
         position: [0, -0.18, 9],
@@ -296,7 +301,6 @@ export default function Scene({
       <FilmStrip
         pointer={pointer}
         scroll={scroll}
-        lowPower={lowPower}
       />
     </Canvas>
   );

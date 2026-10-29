@@ -1,7 +1,7 @@
 /**
  * Central site configuration.
  *
- * Update contact details / identity HERE once —
+ * Update contact details and identity here once.
  * every component reads from this file.
  */
 
@@ -12,22 +12,35 @@ const site = {
   roleDisplay: "WEB DEVELOPER",
   tagline: "Modern websites for businesses and growing brands.",
 
-  // ---- Contact (temporary email — replace in ONE place) ----
-  email: "ansarish8880@gmail.com",
+  email: "ansarishahadatmd786786@gmail.com",
   phone: "7217658640",
+  whatsapp: "917217658640",
   phoneDisplay: "72176 58640",
 
-  location: "Working worldwide",
+  location: "Delhi, India",
   availability: "Available for new projects",
   year: "2026",
 
-  // Placeholder canonical — swap with the real domain after deploy
-  canonical: "https://shahadat.vercel.app/",
+  canonical: "https://shahdatportfolio7860.vercel.app/",
 
-  // Social links — only rendered when a real url is provided.
+  caseStudy: {
+    client: "[TODO: client]",
+    problem: "[TODO: problem]",
+    built: "[TODO: what was built]",
+    result: "[TODO: measurable result]",
+  },
+
+  packages: [
+    { name: "Landing page", price: "₹7,000 to ₹10,000", delivery: "5 days" },
+    { name: "Business website", price: "₹15,000 to ₹20,000", delivery: "10 days" },
+    { name: "Custom experience", price: "₹20,000 to ₹30,000", delivery: "14 days" },
+  ],
+
   socials: [
-    // { label: "GitHub", url: "" },
-    // { label: "LinkedIn", url: "" },
+    // [TODO: Add the GitHub profile URL]
+    { label: "GitHub", url: "" },
+    // [TODO: Add the LinkedIn profile URL]
+    { label: "LinkedIn", url: "" },
   ],
 };
 

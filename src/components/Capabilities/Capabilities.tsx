@@ -10,30 +10,26 @@ const services = [
   {
     n: "01",
     title: "Business Websites",
-    desc: "Complete company websites that make your business look established — and make contacting you effortless.",
+    desc: "Company websites that explain your services and give visitors a direct way to contact you.",
     tags: ["Multi-page", "SEO-ready", "Contact flows"],
-    hue: 210,
   },
   {
     n: "02",
     title: "Landing Pages",
     desc: "Focused single-page builds for a product, offer or campaign. One message, one goal: enquiries and sales.",
     tags: ["Conversion", "Campaign", "Fast loads"],
-    hue: 32,
   },
   {
     n: "03",
     title: "E-commerce",
     desc: "Storefront experiences with collections, product pages and smooth shopping journeys on every screen.",
     tags: ["Storefront", "Cart flow", "Mobile-first"],
-    hue: 300,
   },
   {
     n: "04",
     title: "Custom Web Experiences",
-    desc: "Cinematic, interactive sites with 3D and motion — for brands that need to be remembered.",
+    desc: "Interactive sites using 3D and motion for brands that need a distinct presentation.",
     tags: ["3D / WebGL", "Motion", "Immersive"],
-    hue: 90,
   },
 ];
 
@@ -44,7 +40,7 @@ export default function Capabilities() {
   const fine = useFinePointer();
   const reduced = usePrefersReducedMotion();
 
-  /* floating preview — follows the cursor while hovering rows */
+  /* Floating preview follows the pointer while a row is active. */
   useEffect(() => {
     if (!fine) return;
     const root = rootRef.current!;
@@ -141,10 +137,9 @@ export default function Capabilities() {
               <div className="cap-row-main">
                 <h3 className="display cap-row-title">{s.title}</h3>
                 <p className="cap-row-desc dim">{s.desc}</p>
-                {/* inline abstract art — always visible on touch layouts */}
+                {/* Inline abstract art remains visible on touch layouts. */}
                 <div
                   className="cap-row-art"
-                  style={{ "--hue": s.hue } as React.CSSProperties}
                   aria-hidden="true"
                 >
                   <span className="cap-art-mono mono">{s.title}</span>
@@ -165,7 +160,6 @@ export default function Capabilities() {
                 <div
                   key={s.n}
                   className={`cap-preview-art${active === i ? " is-active" : ""}`}
-                  style={{ "--hue": s.hue } as React.CSSProperties}
                 >
                   <span className="cap-preview-num display">{s.n}</span>
                   <span className="cap-preview-label mono">{s.title}</span>
