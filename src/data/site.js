@@ -21,7 +21,7 @@ const site = {
   availability: "Available for new projects",
   year: "2026",
 
-  canonical: "https://premium-cinematic-portfolio.vercel.app",
+  canonical: "https://shahdatportfolio7860.vercel.app/",
 
   caseStudy: {
     client: "[TODO: client]",
