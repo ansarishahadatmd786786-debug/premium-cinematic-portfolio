@@ -1,6 +1,5 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
 import site from "./src/data/site";
@@ -44,7 +43,7 @@ Sitemap: ${siteOrigin}/sitemap.xml
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), seoAssets()],
+  plugins: [react(), seoAssets()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
