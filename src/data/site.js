@@ -17,7 +17,7 @@ const site = {
   whatsapp: "917217658640",
   phoneDisplay: "72176 58640",
 
-  location: "[TODO: city / location]",
+  location: "Delhi, India",
   availability: "Available for new projects",
   year: "2026",
 
@@ -31,9 +31,9 @@ const site = {
   },
 
   packages: [
-    { name: "Landing page", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
-    { name: "Business website", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
-    { name: "Custom experience", price: "[TODO: price]", delivery: "[TODO: delivery time]" },
+    { name: "Landing page", price: "₹7,000 to ₹10,000", delivery: "[TODO: delivery time]" },
+    { name: "Business website", price: "₹15,000 to ₹20,000", delivery: "[TODO: delivery time]" },
+    { name: "Custom experience", price: "₹20,000 to ₹30,000", delivery: "[TODO: delivery time]" },
   ],
 
   socials: [
