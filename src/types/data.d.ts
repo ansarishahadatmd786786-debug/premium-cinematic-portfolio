@@ -51,6 +51,8 @@ declare module "*/data/projects" {
     initials: string;
     hue: number;
     image: string | null;
+    imageWidth: number;
+    imageHeight: number;
     featured: boolean;
   }
   const projects: Project[];

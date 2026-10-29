@@ -100,13 +100,21 @@ export default function ProjectCard({
         data-cursor="view"
         aria-label={`${project.name}, view live experience (opens in a new tab)`}
       >
-        <div ref={mediaRef} className="project-media">
+        <div
+          ref={mediaRef}
+          className="project-media"
+          style={{
+            aspectRatio: project.image
+              ? `${project.imageWidth} / ${project.imageHeight}`
+              : undefined,
+          }}
+        >
           {project.image ? (
             <img
               src={project.image}
               alt={`${project.name} website screenshot`}
-              width={1600}
-              height={1040}
+              width={project.imageWidth}
+              height={project.imageHeight}
               loading={loading ?? (project.num === "01" ? "eager" : "lazy")}
               decoding="async"
             />

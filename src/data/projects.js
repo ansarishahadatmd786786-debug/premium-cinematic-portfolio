@@ -24,6 +24,8 @@ const projects = [
     initials: "SD",
     hue: 190,
     image: "/images/projects/smilecraft/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 921,
 
   },
   {
@@ -41,6 +43,8 @@ const projects = [
     initials: "VH",
     hue: 158,
    image: "/images/projects/velacare/cover.webp",
+   imageWidth: 1600,
+   imageHeight: 929,
 
   },
   {
@@ -58,6 +62,8 @@ const projects = [
     initials: "ES",
     hue: 22,
     image: "/images/projects/ember-spice/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 852,
   },
   {
     id: "lumea",
@@ -74,6 +80,8 @@ const projects = [
     initials: "LU",
     hue: 330,
     image: "/images/projects/lumea/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 745,
   },
   {
     id: "ironvault",
@@ -90,6 +98,8 @@ const projects = [
     initials: "IF",
     hue: 6,
     image: "/images/projects/ironvault/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 724,
   },
   {
     id: "nexora",
@@ -106,6 +116,8 @@ const projects = [
     initials: "NA",
     hue: 222,
     image: "/images/projects/nexora/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 819,
   },
   {
     id: "aurelia-estates",
@@ -122,6 +134,8 @@ const projects = [
     initials: "AE",
     hue: 42,
     image: "/images/projects/aurelia-estates/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 801,
 
   },
   {
@@ -139,6 +153,8 @@ const projects = [
     initials: "VL",
     hue: 46,
     image: "/images/projects/veritas/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 934,
   },
   {
     id: "aurora-threads",
@@ -155,6 +171,8 @@ const projects = [
     initials: "AT",
     hue: 275,
    image: "/images/projects/aurora-threads/cover.webp",
+   imageWidth: 1600,
+   imageHeight: 855,
   },
   {
     id: "aurelia-resort",
@@ -171,6 +189,8 @@ const projects = [
     initials: "AG",
     hue: 196,
     image: "/images/projects/aurelia-resort/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 921,
 
   },
   {
@@ -188,6 +208,8 @@ const projects = [
     initials: "LP",
     hue: 34,
     image: "/images/projects/lumiere/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 917,
   },
   {
     id: "pee-kay",
@@ -204,6 +226,8 @@ const projects = [
     initials: "PK",
     hue: 28,
     image: "/images/projects/pee-kay/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 889,
   },
   {
     id: "premium-jewellery-showroom",
@@ -220,6 +244,8 @@ const projects = [
     initials: "PJ",
     hue: 42,
     image: "/images/projects/premium-jewellery-showroom/cover.webp",
+    imageWidth: 1600,
+    imageHeight: 916,
   },
 ];
 
