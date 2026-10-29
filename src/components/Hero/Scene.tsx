@@ -7,6 +7,11 @@ type Project = {
   image: string;
 };
 
+export type PointerPosition = {
+  x: number;
+  y: number;
+};
+
 const PROJECTS: Project[] = [
   { image: "/images/projects/smilecraft/cover-hero.webp" },
   { image: "/images/projects/premium-jewellery-showroom/cover-hero.webp" },
@@ -21,7 +26,7 @@ type ProjectFrameProps = {
   project: Project;
   index: number;
   total: number;
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
 };
 
@@ -189,7 +194,7 @@ function FilmStrip({
   pointer,
   scroll,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
 }) {
   const groupRef = useRef<THREE.Group>(null);
@@ -241,7 +246,7 @@ function FilmStrip({
 function CameraRig({
   pointer,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
 }) {
   const { camera } = useThree();
 
@@ -270,7 +275,7 @@ export default function Scene({
   lowPower = false,
   active = true,
 }: {
-  pointer: MutableRefObject<THREE.Vector2>;
+  pointer: MutableRefObject<PointerPosition>;
   scroll: MutableRefObject<number>;
   lowPower?: boolean;
   active?: boolean;

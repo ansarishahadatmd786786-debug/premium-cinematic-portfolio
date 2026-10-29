@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { isWebGLAvailable } from "../../lib/webgl";
 import {
   useIsMobile,
   usePrefersReducedMotion,
 } from "../../hooks/useMediaQuery";
-import Scene from "./Scene";
+import type { PointerPosition } from "./Scene";
 import site from "../../data/site";
 import "./Hero.css";
+
+const Scene = lazy(() => import("./Scene"));
 
 /* Elegant static substitute when WebGL is unavailable */
 function FallbackArt() {
@@ -32,7 +33,7 @@ export default function Hero({
   const rootRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const pointer = useRef(new THREE.Vector2());
+  const pointer = useRef<PointerPosition>({ x: 0, y: 0 });
   const scroll = useRef(0);
 
   const isMobile = useIsMobile();
@@ -56,10 +57,8 @@ export default function Hero({
   useEffect(() => {
     if (isMobile) return;
     const onMove = (e: PointerEvent) => {
-      pointer.current.set(
-        (e.clientX / window.innerWidth) * 2 - 1,
-        (e.clientY / window.innerHeight) * 2 - 1,
-      );
+      pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.current.y = (e.clientY / window.innerHeight) * 2 - 1;
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     return () => window.removeEventListener("pointermove", onMove);
@@ -161,12 +160,14 @@ export default function Hero({
       <div ref={pinRef} className="hero-pin">
         <div ref={canvasRef} className="hero-canvas" aria-hidden="true">
           {webgl ? (
-            <Scene
-              pointer={pointer}
-              scroll={scroll}
-              lowPower={isMobile}
-              active={inView}
-            />
+            <Suspense fallback={<FallbackArt />}>
+              <Scene
+                pointer={pointer}
+                scroll={scroll}
+                lowPower={isMobile}
+                active={inView}
+              />
+            </Suspense>
           ) : (
             <FallbackArt />
           )}
