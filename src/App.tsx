@@ -23,10 +23,12 @@ import Packages from "./components/Packages/Packages";
 export default function App() {
   const reduced = usePrefersReducedMotion();
   const [showLoader] = useState(() => {
-    return (
-      !reduced &&
-      sessionStorage.getItem("portfolio-loader-seen") !== "true"
-    );
+    if (reduced) return false;
+    try {
+      return sessionStorage.getItem("portfolio-loader-seen") !== "true";
+    } catch {
+      return true;
+    }
   });
   /** loader exit has begun → hero intro + navbar entrance start */
   const [exitBegan, setExitBegan] = useState(!showLoader);
@@ -54,7 +56,11 @@ export default function App() {
 
   useEffect(() => {
     if (showLoader) {
-      sessionStorage.setItem("portfolio-loader-seen", "true");
+      try {
+        sessionStorage.setItem("portfolio-loader-seen", "true");
+      } catch {
+        // Keep the loader for this visit when session storage is unavailable.
+      }
     }
   }, [showLoader]);
 
