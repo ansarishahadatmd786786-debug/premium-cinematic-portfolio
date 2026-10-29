@@ -1,5 +1,12 @@
 import site from "../../data/site";
+import {
+  getOptionalSectionVisibility,
+  getSectionIndices,
+} from "../../lib/sections";
 import "./CaseStudy.css";
+
+const sectionVisibility = getOptionalSectionVisibility();
+const sectionIndices = getSectionIndices(sectionVisibility);
 
 const fields = [
   {
@@ -18,12 +25,8 @@ const fields = [
 const client =
   site.caseStudy.client.trim() || "[TODO: client]";
 
-const hasTodo = Object.values(site.caseStudy).some(
-  (value) => !value.trim() || value.startsWith("[TODO:"),
-);
-
 export default function CaseStudy() {
-  if (!import.meta.env.DEV && hasTodo) return null;
+  if (!sectionVisibility.caseStudy) return null;
 
   return (
     <section
@@ -33,7 +36,7 @@ export default function CaseStudy() {
     >
       <div className="wrap">
         <div className="label-row mono">
-          <span className="label-index">08</span>
+          <span className="label-index">{sectionIndices.caseStudy}</span>
           <span>Case study</span>
           <span className="label-note dim">Project details</span>
         </div>

@@ -3,7 +3,10 @@ import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { usePrefersReducedMotion } from "../../hooks/useMediaQuery";
 import site from "../../data/site";
+import { getSectionIndices } from "../../lib/sections";
 import "./Contact.css";
+
+const sectionIndices = getSectionIndices();
 
 export default function Contact() {
   const rootRef = useRef<HTMLElement>(null);
@@ -146,7 +149,7 @@ export default function Contact() {
     >
       <div className="wrap">
         <div className="label-row mono">
-          <span className="label-index">07</span>
+          <span className="label-index">{sectionIndices.contact}</span>
           <span>Contact</span>
           <span className="label-note dim">Start a project</span>
         </div>

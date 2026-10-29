@@ -1,22 +1,21 @@
 import site from "../../data/site";
+import {
+  getOptionalSectionVisibility,
+  getSectionIndices,
+} from "../../lib/sections";
 import "./Packages.css";
 
-const hasTodo = site.packages.some(
-  (item) =>
-    !item.price.trim() ||
-    !item.delivery.trim() ||
-    item.price.startsWith("[TODO:") ||
-    item.delivery.startsWith("[TODO:"),
-);
+const sectionVisibility = getOptionalSectionVisibility();
+const sectionIndices = getSectionIndices(sectionVisibility);
 
 export default function Packages() {
-  if (!import.meta.env.DEV && hasTodo) return null;
+  if (!sectionVisibility.packages) return null;
 
   return (
     <section className="packages section" id="packages" aria-labelledby="packages-title">
       <div className="wrap">
         <div className="label-row mono">
-          <span className="label-index">09</span>
+          <span className="label-index">{sectionIndices.packages}</span>
           <span>Packages</span>
           <span className="label-note dim">Scope and timing</span>
         </div>
