@@ -13,6 +13,7 @@ declare module "*/data/site" {
     tagline: string;
     email: string;
     phone: string;
+    whatsapp: string;
     phoneDisplay: string;
     location: string;
     availability: string;

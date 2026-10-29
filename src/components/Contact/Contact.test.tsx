@@ -9,6 +9,14 @@ afterEach(() => {
 });
 
 describe("Contact form", () => {
+  it("uses the international WhatsApp number", () => {
+    render(<Contact />);
+    const whatsappLink = screen.getByRole("link", { name: /Chat on WhatsApp/ });
+    expect(whatsappLink.getAttribute("href")).toMatch(
+      /^https:\/\/wa\.me\/917217658640\?/,
+    );
+  });
+
   it("posts enquiries to the configured endpoint and reports success", async () => {
     vi.stubEnv("VITE_FORM_ENDPOINT", "https://forms.example/submit");
     vi.stubEnv("VITE_FORM_KEY", "browser-public-key");

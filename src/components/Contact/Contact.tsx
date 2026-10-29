@@ -12,7 +12,6 @@ export default function Contact() {
   );
   const [feedback, setFeedback] = useState("");
   const reduced = usePrefersReducedMotion();
-  const whatsappNumber = site.phone.replace(/\D/g, "");
   const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT?.trim();
   const formKey = import.meta.env.VITE_FORM_KEY?.trim();
 
@@ -136,7 +135,7 @@ export default function Contact() {
               <li className="contact-fade contact-row-item">
                 <a
                   className="btn btn--ghost contact-whatsapp"
-                  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Shahadat, I'd like to discuss a website project.")}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Shahadat, I'd like to discuss a website project.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -150,7 +149,7 @@ export default function Contact() {
                   <Phone size={13} strokeWidth={1.5} aria-hidden="true" />
                   Phone
                 </span>
-                <a className="u-link contact-row-value" href={`tel:${site.phone}`}>
+                <a className="u-link contact-row-value" href={`tel:+91${site.phone}`}>
                   {site.phoneDisplay}
                 </a>
               </li>

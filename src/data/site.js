@@ -14,6 +14,7 @@ const site = {
 
   email: "ansarishahadatmd786786@gmail.com",
   phone: "7217658640",
+  whatsapp: "917217658640",
   phoneDisplay: "72176 58640",
 
   location: "[TODO: city / location]",
