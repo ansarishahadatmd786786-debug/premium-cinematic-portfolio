@@ -7,12 +7,23 @@ import "./Contact.css";
 
 export default function Contact() {
   const rootRef = useRef<HTMLElement>(null);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error" | "draft"
+  >("idle");
   const [feedback, setFeedback] = useState("");
   const reduced = usePrefersReducedMotion();
-  const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT?.trim();
+  const configuredProvider = import.meta.env.VITE_FORM_PROVIDER?.trim();
+  const formProvider =
+    configuredProvider === "web3forms" ||
+    configuredProvider === "formspree" ||
+    configuredProvider === "generic"
+      ? configuredProvider
+      : "generic";
+  const configuredEndpoint = import.meta.env.VITE_FORM_ENDPOINT?.trim();
+  const formEndpoint =
+    formProvider === "web3forms"
+      ? configuredEndpoint || "https://api.web3forms.com/submit"
+      : configuredEndpoint;
   const formKey = import.meta.env.VITE_FORM_KEY?.trim();
 
   useEffect(() => {
@@ -61,11 +72,16 @@ export default function Contact() {
     ].join("\n");
 
     if (!formEndpoint) {
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-        subject,
-      )}&body=${encodeURIComponent(body)}`;
-      setStatus("success");
-      setFeedback("Your email app should open with a draft. Send it to complete the enquiry.");
+      window.open(
+        `mailto:${site.email}?subject=${encodeURIComponent(
+          subject,
+        )}&body=${encodeURIComponent(body)}`,
+        "_self",
+      );
+      setStatus("draft");
+      setFeedback(
+        "Your email app should open with a draft. The enquiry is sent only after you send that email.",
+      );
       return;
     }
 
@@ -73,16 +89,39 @@ export default function Contact() {
     setFeedback("Sending your message...");
 
     try {
+      const requestBody =
+        formProvider === "web3forms"
+          ? {
+              access_key: formKey || "",
+              name,
+              email,
+              business,
+              message,
+              subject,
+              from_name: "Portfolio",
+            }
+          : { name, email, business, message };
       const response = await fetch(formEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(formKey ? { Authorization: `Bearer ${formKey}` } : {}),
+          Accept: "application/json",
         },
-        body: JSON.stringify({ name, email, business, message }),
+        body: JSON.stringify(requestBody),
       });
       if (!response.ok) {
         throw new Error(`The form service returned ${response.status}.`);
+      }
+      if (formProvider === "web3forms") {
+        const result: unknown = await response.json();
+        if (
+          typeof result === "object" &&
+          result !== null &&
+          "success" in result &&
+          result.success === false
+        ) {
+          throw new Error("The form service did not accept the enquiry.");
+        }
       }
 
       form.reset();
