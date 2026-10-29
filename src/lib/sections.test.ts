@@ -16,14 +16,14 @@ describe("optional section numbering", () => {
     });
   });
 
-  it("skips TODO-backed production sections when calculating contact index", () => {
+  it("hides the TODO-backed case study and shows completed packages in production", () => {
     const visibility = getOptionalSectionVisibility(false);
 
-    expect(visibility).toEqual({ caseStudy: false, packages: false });
+    expect(visibility).toEqual({ caseStudy: false, packages: true });
     expect(getSectionIndices(visibility)).toEqual({
       caseStudy: "07",
       packages: "07",
-      contact: "07",
+      contact: "08",
     });
   });
 });

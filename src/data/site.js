@@ -31,9 +31,9 @@ const site = {
   },
 
   packages: [
-    { name: "Landing page", price: "₹7,000 to ₹10,000", delivery: "[TODO: delivery time]" },
-    { name: "Business website", price: "₹15,000 to ₹20,000", delivery: "[TODO: delivery time]" },
-    { name: "Custom experience", price: "₹20,000 to ₹30,000", delivery: "[TODO: delivery time]" },
+    { name: "Landing page", price: "₹7,000 to ₹10,000", delivery: "5 days" },
+    { name: "Business website", price: "₹15,000 to ₹20,000", delivery: "10 days" },
+    { name: "Custom experience", price: "₹20,000 to ₹30,000", delivery: "14 days" },
   ],
 
   socials: [
