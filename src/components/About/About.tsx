@@ -41,6 +41,25 @@ export default function About() {
   useEffect(() => {
     if (reduced) return;
     const ctx = gsap.context(() => {
+      // Section-level horizontal wipe, matching the reference site's cinematic
+      // scroll transitions while keeping the section in normal document flow.
+      gsap.fromTo(
+        rootRef.current,
+        { xPercent: -9, clipPath: "inset(0 0 0 13%)" },
+        {
+          xPercent: 0,
+          clipPath: "inset(0 0 0 0%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 96%",
+            end: "top 28%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
       const words = splitWords(headlineRef.current!);
       gsap.fromTo(
         words,
