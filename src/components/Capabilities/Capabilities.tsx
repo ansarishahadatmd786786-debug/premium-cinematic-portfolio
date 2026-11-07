@@ -80,13 +80,33 @@ export default function Capabilities() {
   useEffect(() => {
     if (reduced) return;
     const ctx = gsap.context(() => {
+      // Services enters from the opposite side to create an alternating,
+      // cinematic section transition while preserving normal page scrolling.
+      gsap.fromTo(
+        rootRef.current,
+        { xPercent: 9, clipPath: "inset(0 13% 0 0)" },
+        {
+          xPercent: 0,
+          clipPath: "inset(0 0% 0 0)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 96%",
+            end: "top 28%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
       gsap.fromTo(
         ".cap-row",
-        { opacity: 0, y: 44 },
+        { opacity: 0, x: 76, clipPath: "inset(0 0 0 14%)" },
         {
           opacity: 1,
-          y: 0,
-          duration: 0.85,
+          x: 0,
+          clipPath: "inset(0 0 0 0%)",
+          duration: 0.95,
           ease: "power3.out",
           stagger: 0.09,
           scrollTrigger: { trigger: ".cap-list", start: "top 80%" },

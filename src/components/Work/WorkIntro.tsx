@@ -14,6 +14,25 @@ export default function WorkIntro() {
   useEffect(() => {
     if (reduced) return;
     const ctx = gsap.context(() => {
+      // Selected Work arrives as a wide cinematic panel, continuing the
+      // alternating horizontal movement used by About and Services.
+      gsap.fromTo(
+        rootRef.current,
+        { xPercent: -8, clipPath: "inset(0 0 0 12%)" },
+        {
+          xPercent: 0,
+          clipPath: "inset(0 0 0 0%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 96%",
+            end: "top 28%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+
       const counter = { v: 1 };
       if (numRef.current) numRef.current.textContent = "01";
 

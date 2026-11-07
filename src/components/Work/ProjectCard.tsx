@@ -30,10 +30,12 @@ export default function ProjectCard({
       // 70% → 100% scale-in as the visual enters the viewport
       gsap.fromTo(
         visualRef.current,
-        { scale: 0.86, y: 70 },
+        { scale: 0.94, xPercent: flip ? 14 : -14, y: 34, clipPath: "inset(0 12% 0 12%)" },
         {
           scale: 1,
+          xPercent: 0,
           y: 0,
+          clipPath: "inset(0 0% 0 0%)",
           ease: "none",
           scrollTrigger: {
             trigger: visualRef.current,
@@ -63,11 +65,12 @@ export default function ProjectCard({
       // Info cascade
       gsap.fromTo(
         rootRef.current!.querySelectorAll(".p-fade"),
-        { opacity: 0, y: 28 },
+        { opacity: 0, x: flip ? -42 : 42, y: 8 },
         {
           opacity: 1,
+          x: 0,
           y: 0,
-          duration: 0.85,
+          duration: 0.9,
           ease: "power3.out",
           stagger: 0.08,
           scrollTrigger: {
@@ -79,7 +82,7 @@ export default function ProjectCard({
     }, rootRef);
 
     return () => ctx.revert();
-  }, [reduced]);
+  }, [reduced, flip]);
 
   return (
     <article
