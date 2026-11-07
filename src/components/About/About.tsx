@@ -54,13 +54,25 @@ export default function About() {
         }
       );
       gsap.fromTo(
+        ".about-photo",
+        { x: -72, clipPath: "inset(0 100% 0 0)" },
+        {
+          x: 0,
+          clipPath: "inset(0 0% 0 0)",
+          duration: 1.15,
+          ease: "power4.out",
+          scrollTrigger: { trigger: ".about-body", start: "top 82%" },
+        }
+      );
+      gsap.fromTo(
         ".about-fade",
-        { opacity: 0, y: 34 },
+        { opacity: 0, x: 52, y: 10 },
         {
           opacity: 1,
+          x: 0,
           y: 0,
-          duration: 0.9,
-          ease: "power3.out",
+          duration: 0.95,
+          ease: "power4.out",
           stagger: 0.09,
           scrollTrigger: { trigger: ".about-body", start: "top 82%" },
         }
