@@ -82,11 +82,12 @@ export default function Capabilities() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".cap-row",
-        { opacity: 0, y: 44 },
+        { opacity: 0, x: 76, clipPath: "inset(0 0 0 14%)" },
         {
           opacity: 1,
-          y: 0,
-          duration: 0.85,
+          x: 0,
+          clipPath: "inset(0 0 0 0%)",
+          duration: 0.95,
           ease: "power3.out",
           stagger: 0.09,
           scrollTrigger: { trigger: ".cap-list", start: "top 80%" },
