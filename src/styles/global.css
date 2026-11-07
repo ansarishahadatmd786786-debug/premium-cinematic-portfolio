@@ -4,13 +4,13 @@
    ============================================================ */
 
 :root {
-  --bg: #0F0E0C;
-  --bg-2: #1A1814;
+  --bg: #101010;
+  --bg-2: #242424;
   --line: rgba(244, 241, 234, 0.14);
-  --ink: #F4F1EA;
-  --ink-dim: #B8B4A8;
+  --ink: #F5F0E6;
+  --ink-dim: #C2BBAE;
   --line-soft: rgba(244, 241, 234, 0.08);
-  --accent: #E8A93C;
+  --accent: #D6AC63;
 
   --f-display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --f-body: "Inter", system-ui, sans-serif;
