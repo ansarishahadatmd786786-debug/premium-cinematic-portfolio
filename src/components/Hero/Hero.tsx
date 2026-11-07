@@ -130,8 +130,8 @@ export default function Hero({
         // Phase 03: "FOR BUSINESSES." mask-reveals
         .fromTo(
           ".hero-final",
-          { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "power2.out" },
+          { clipPath: "inset(0 0 100% 0)", xPercent: 18 },
+          { clipPath: "inset(0 0 0% 0)", xPercent: 0, duration: 1.1, ease: "power2.out" },
           1.85
         )
         .fromTo(
